@@ -1,0 +1,61 @@
+TODO
+====
+
+Use plone.app.imaging sizes
+---------------------------
+
+Make LeadimageImageField use plone.app.imaging sizes (w/o blob support too)
+if that package is installed
+maybe using getAvailableSizes is enough here and still compatible.
+
+Currently defining tile 200:200 in `@@imaging-controlpanel` still results
+in 64x64 pixel images returned by content/leadImage_tile
+
+
+
+
+Backward Compatibility
+----------------------
+
+Provide migration steps (or at least a configuration switch to
+turn off blob-support) for users with existing instances.
+Those would get a blob-related error when accessing an image previously stored in zodb.
+
+If we don't write a migration and want to obtain backward compatibility
+we should register our LeadImageBlobExtender via overrides.zcml, not via a zcml condition.
+
+
+Fix Tests
+---------
+
+We'd need to find a way to test "w/ blob" and "w/o blob" configuration.
+
+I currently adapted the test so it does not fail with plone4.0b2.
+Deleting the Image (the last line) does not yet pass, since blob fields seem to do that differently.
+
+
+define size via propertiestool.xml
+----------------------------------
+
+when defining the size of the leadimage via propertiestool.xml::
+
+
+    <object name="cli_properties" meta_type="Plone Property Sheet">
+        <property name="image_height" type="int">42</property>
+        <property name="image_width" type="int">42</property>
+    </object>
+
+the settings get applied and set in portal_properties/cli_properties/manage_propertiesForm
+
+however, @@contentleadimage-controlpanel and @@imaging-controlpanel still shows
+the defaults of 81x67
+
+the reason for that is that we keep the settings in propertiestool, but we use the
+plone.app.imaging settings for the controlpanel.
+
+if possible we should get rid of the size settings in the propertiestool.
+if not, we should at least keep them in sync with plone.app.imaging settings.
+
+
+
+

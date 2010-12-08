@@ -1,0 +1,5 @@
+<div i18n:domain="collective.contentleadimage">
+
+    <img tal:replace="structure python:view.descTag(css_class='tileImage')" />
+
+</div>

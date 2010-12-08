@@ -1,0 +1,126 @@
+# Paolo Melchiorre, <paulox@paulox.net> 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contentleadimage-it\n"
+"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"PO-Revision-Date: 2008-12-12 18:55+0100\n"
+"Last-Translator: Paolo Melchiorre <paolo@melchiorre.org>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italiano\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: AddRemoveWidget\n"
+"X-Is-Fallback-For: it-ch it-it\n"
+
+#: ./leadimageprefs.py:57
+#, fuzzy
+msgid "'Body' image scale"
+msgstr "'Body' image scale"
+
+#: ./leadimageprefs.py:50
+#, fuzzy
+msgid "'Description' image scale"
+msgstr "'Description' image scale"
+
+#: ./leadimageprefs.py:173
+#, fuzzy
+msgid "Content Lead Image Settings"
+msgstr "Content Lead Image Settings"
+
+#: ./leadimageprefs.py:171
+#, fuzzy
+msgid "Content Lead Image Settings Form"
+msgstr "Content Lead Image Settings Form"
+
+#, fuzzy
+msgid "Folder lead-image view"
+msgstr "Folder lead-image view"
+
+#: ./leadimageprefs.py:44
+msgid "Height"
+msgstr "Altezza"
+
+#: ./extender.py:59
+msgid "Lead image"
+msgstr "Immagine"
+
+#: ./extender.py:74
+msgid "Lead image caption"
+msgstr "Didascalia immagine"
+
+#: ./leadimageprefs.py:45
+#, fuzzy
+msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+
+#: ./leadimageprefs.py:39
+#, fuzzy
+msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+
+#: ./leadimageprefs.py:58
+#, fuzzy
+msgid "Please select scale which will be used in the body."
+msgstr "Please select scale which will be used in the body."
+
+#: ./leadimageprefs.py:51
+#, fuzzy
+msgid "Please select scale which will be used next to Description field."
+msgstr "Please select scale which will be used next to Description field."
+
+#: ./leadimageprefs.py:31
+msgid "Portal types"
+msgstr "Tipo di contenuto"
+
+#: ./leadimageprefs.py:32
+#, fuzzy
+msgid "Portal types lead image may be attached to."
+msgstr "Portal types lead image may be attached to."
+
+#: ./leadimageprefs.py:172
+#, fuzzy
+msgid "Select properties for Content Lead Image"
+msgstr "Select properties for Content Lead Image"
+
+#: ./leadimageprefs.py:68
+#, fuzzy
+msgid "Show image in body area"
+msgstr "Show image in body area"
+
+#: ./leadimageprefs.py:64
+#, fuzzy
+msgid "Show image next to Description field"
+msgstr "Show image next to Description field"
+
+#, fuzzy
+msgid "View with lead images displayed"
+msgstr "View with lead images displayed"
+
+#: ./leadimageprefs.py:38
+msgid "Width"
+msgstr "Larghezza"
+
+#: ./extender.py:60
+msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
+msgstr "Puoi inserire un'immagine. Verrà mostrata nella parte superiore del contenuto. L'immagine sarà scalata a una dimensione ragionevole."
+
+#: ./extender.py:75
+msgid "You may enter lead image caption text"
+msgstr "Puoi inserire la didascalia dell'immagine"
+
+#. Default: "Recreate scales"
+#: ./leadimageprefs.py:199
+#, fuzzy
+msgid "label_recreate_scales"
+msgstr "label_recreate_scales"
+
+#. Default: "${number} scales recreated."
+#: ./leadimageprefs.py:228
+#, fuzzy
+msgid "text_scales_recreated"
+msgstr "text_scales_recreated"
+

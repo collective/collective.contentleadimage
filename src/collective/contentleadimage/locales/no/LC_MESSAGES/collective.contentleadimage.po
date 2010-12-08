@@ -1,0 +1,110 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contentleadimage\n"
+"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"PO-Revision-Date: 2008-09-22 13:15+0100\n"
+"Last-Translator: Espen Moe-Nilssen <espen@medialog.no>\n"
+"Language-Team: Norsk <espen@medialog.no>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: no\n"
+"Language-Name: Norsk\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.contentleadimage\n"
+"X-Poedit-Language: Norwegian Nynorsk\n"
+"X-Poedit-Country: NORWAY\n"
+
+#: ./leadimageprefs.py:57
+msgid "'Body' image scale"
+msgstr "'Brødtekst' billedstørrelse"
+
+#: ./leadimageprefs.py:50
+msgid "'Description' image scale"
+msgstr "'Beskrivelse' Bildestørrelse"
+
+#: ./leadimageprefs.py:173
+msgid "Content Lead Image Settings"
+msgstr "Content Lead Instillinger"
+
+#: ./leadimageprefs.py:171
+msgid "Content Lead Image Settings Form"
+msgstr "Content Lead Instillingsform"
+
+msgid "Folder lead-image view"
+msgstr "Content Lead visning"
+
+#: ./leadimageprefs.py:44
+msgid "Height"
+msgstr "Maks høyde"
+
+#: ./extender.py:59
+msgid "Lead image"
+msgstr "Lead image/bilde"
+
+#: ./extender.py:74
+msgid "Lead image caption"
+msgstr "Lead Image billedtekst"
+
+#: ./leadimageprefs.py:45
+msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead Image høyde for skalering. Verdien her blir brukt for å generere 'leadimage scale'"
+
+#: ./leadimageprefs.py:39
+msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead Image bredde for skalering. Verdien her blir brukt for å generere 'leadimage scale'"
+
+#: ./leadimageprefs.py:58
+msgid "Please select scale which will be used in the body."
+msgstr "Vennligst velg hvilken skalering som skal bli brukt i brødteksten."
+
+#: ./leadimageprefs.py:51
+msgid "Please select scale which will be used next to Description field."
+msgstr "Vennligst velg skaleringen some vil bli brukt ved siden av Beskrivelses/Ingress feltet"
+
+#: ./leadimageprefs.py:31
+msgid "Portal types"
+msgstr "Portal typer"
+
+#: ./leadimageprefs.py:32
+msgid "Portal types lead image may be attached to."
+msgstr "Portal types som lead image kan bli knyttet til"
+
+#: ./leadimageprefs.py:172
+msgid "Select properties for Content Lead Image"
+msgstr "Velg instillinger for Content Lead Image/bilde"
+
+#: ./leadimageprefs.py:68
+msgid "Show image in body area"
+msgstr "Vis bilde i brødteksten"
+
+#: ./leadimageprefs.py:64
+msgid "Show image next to Description field"
+msgstr "Vis bilde ved siden av beskrivelsen"
+
+msgid "View with lead images displayed"
+msgstr "Visning med \"lead images\"/bilder"
+
+#: ./leadimageprefs.py:38
+msgid "Width"
+msgstr "Bredde"
+
+#: ./extender.py:60
+msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
+msgstr "Du kan laste opp \"lead image\"/bilde. Bildet vil bli vist over innholdet. Bildet vil automatisk bli skalert til størrelsen som er satt i kontrollpanelet"
+
+#: ./extender.py:75
+msgid "You may enter lead image caption text"
+msgstr "Du kan skrive lead image billedtekst"
+
+#. Default: "Recreate scales"
+#: ./leadimageprefs.py:199
+msgid "label_recreate_scales"
+msgstr ""
+
+#. Default: "${number} scales recreated."
+#: ./leadimageprefs.py:228
+msgid "text_scales_recreated"
+msgstr ""
+

@@ -1,0 +1,111 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+	xmlns:browser="http://namespaces.zope.org/browser"
+	xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="collective.contentleadimage">
+
+    <five:registerPackage package="." initialize=".initialize" />
+    <i18n:registerTranslations directory="locales" />
+
+    <include package=".browser" />
+    <include package="archetypes.schemaextender" />
+
+
+    <adapter factory=".extender.LeadImageExtender"
+        zcml:condition="not-installed plone.app.blob"
+        provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+        name="collective.contentleadimage" />
+
+    <adapter factory=".extender.LeadImageBlobExtender"
+        zcml:condition="installed plone.app.blob"
+        provides="archetypes.schemaextender.interfaces.IOrderableSchemaExtender"
+        name="collective.contentleadimage" />
+
+
+    <adapter factory=".leadimageprefs.LeadImageControlPanelAdapter" />
+
+    <configure zcml:condition="not-installed plone.app.imaging">
+        <!-- plone.app.imaging.traverse.ImageTraverser takes care of this -->
+        <adapter for=".interfaces.ILeadImageable
+            zope.publisher.interfaces.http.IHTTPRequest"
+            factory=".extender.LeadImageTraverse"
+            provides="zope.publisher.interfaces.IPublishTraverse"/>
+
+        <utility factory=".vocabulary.ScalesVocabulary"
+                 provides="zope.schema.interfaces.IVocabularyFactory"
+                 name='collective.contentleadimage.scales_vocabulary' />
+
+    </configure>
+
+    <configure zcml:condition="installed plone.app.imaging">
+        <!-- obtain available scales from plone.app.imaging -->
+
+        <utility factory=".vocabulary.PloneAppImagingScalesVocabulary"
+                 provides="zope.schema.interfaces.IVocabularyFactory"
+                 name='collective.contentleadimage.scales_vocabulary' />
+    </configure>
+
+    <class class="Products.Archetypes.BaseObject.BaseObject">
+          <implements interface=".interfaces.ILeadImageable" />
+    </class>
+
+
+    <genericsetup:registerProfile zcml:condition="have plone-4"
+        name="default"
+        title="Content Lead Image"
+        directory="profiles/default"
+        description="Extension profile for Content Lead Image"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    />
+
+    <genericsetup:registerProfile zcml:condition="not-have plone-4"
+        name="default"
+        title="Content Lead Image"
+        directory="profiles/default-plone3"
+        description="Extension profile for Content Lead Image"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+    />
+
+    <genericsetup:registerProfile
+        name="uninstall"
+        title="Content Lead Image Uninstall"
+        directory="profiles/uninstall"
+        description="Uninstall profile for Content Lead Image"
+        provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <!--genericsetup:importStep
+         name="contentleadimage-various"
+         title="Various import steps for colective.contentleadimage"
+         description=""
+         handler=".setuphandlers.importVarious">
+        <depends name="propertiestool"/>
+    </genericsetup:importStep-->
+
+    <genericsetup:upgradeStep
+        title="Upgrade Content Lead Image Product"
+        description="Upgrades contentleadimage from Annotations to ImageField"
+        source="0.3"
+        destination="1.0"
+        handler=".migration.migrate0xto1"
+        sortkey="1"
+        profile="collective.contentleadimage:default"
+    />
+
+    <genericsetup:upgradeStep
+        zcml:condition="installed plone.app.blob"
+        title="Upgrade Content Lead Image Product"
+        description="Migrate Images to blob storage (use eg. when you are migrating to Plone 4)."
+        source="1.3.0a1"
+        destination="1.3.0"
+        handler=".migration.migrateToBlobs"
+        sortkey="2"
+        profile="collective.contentleadimage:default"
+    />
+
+</configure>

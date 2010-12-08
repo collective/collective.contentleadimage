@@ -1,0 +1,79 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.contentleadimage">
+    
+    <include package="plone.app.contentmenu" />
+    
+    <!-- Custom viewlet -->
+    <browser:viewlet
+        name="collective.contentleadimage.thumbnail"
+        for="..interfaces.ILeadImageable"
+        class=".viewlets.LeadImageViewlet"
+        manager="plone.app.layout.viewlets.interfaces.IBelowContentTitle"
+        template="leadimage.pt"
+        layer="..interfaces.ILeadImageSpecific"
+        permission="zope2.View"
+    />
+
+    <browser:viewlet
+        name="collective.contentleadimage.full"
+        for="..interfaces.ILeadImageable"
+        class=".viewlets.LeadImageViewlet"
+        manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
+        template="leadimage-body.pt"
+        layer="..interfaces.ILeadImageSpecific"
+        permission="zope2.View"
+    />
+
+    <browser:page
+         name="contentleadimage-controlpanel"
+         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+         class="..leadimageprefs.LeadImagePrefsForm"
+         layer="..interfaces.ILeadImageSpecific"
+         permission="cmf.ManagePortal"
+    />
+    
+    <browser:resource
+        name="contentleadimage.css"
+        layer="..interfaces.ILeadImageSpecific"
+        file="contentleadimage.css" />
+   
+    <browser:page
+         for="Products.Archetypes.interfaces.IBaseFolder"
+         name="folder_leadimage_view"
+         class=".folder_leadimage_view.FolderLeadImageView"
+         template="folder_leadimage_view.pt"
+         layer="..interfaces.ILeadImageSpecific"
+         permission="zope2.View"
+    />
+    
+    <browser:menuItem
+        for="Products.Archetypes.interfaces.IBaseFolder"
+        menu="plone_displayviews"
+        title="Folder lead-image view"
+        action="folder_leadimage_view"
+        layer="..interfaces.ILeadImageSpecific"
+        description="View with lead images displayed"
+    />
+   
+    <browser:page
+         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+         name="folder_leadimage_view"
+         class=".folder_leadimage_view.FolderLeadImageView"
+         template="folder_leadimage_view.pt"
+         layer="..interfaces.ILeadImageSpecific"
+         permission="zope2.View"
+     />
+    
+    <browser:menuItem
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        menu="plone_displayviews"
+        title="Folder lead-image view"
+        action="folder_leadimage_view"
+        layer="..interfaces.ILeadImageSpecific"
+        description="View with lead images displayed"
+    />
+
+</configure>

@@ -1,0 +1,111 @@
+# Pablo Caro <correo@pablocaro.es>, 2010.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contentleadimage-it\n"
+"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"PO-Revision-Date: 2010-06-05 18:56+0200\n"
+"Last-Translator: Pablo Caro <correo@pablocaro.es>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: es\n"
+"Language-Name: Español\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.contentleadimage\n"
+"X-Is-Fallback-For: es-ar\n"
+"X-Generator: Lokalize 1.0\n"
+
+#: ./leadimageprefs.py:57
+msgid "'Body' image scale"
+msgstr "Escala de la imagen de 'Body'"
+
+#: ./leadimageprefs.py:50
+msgid "'Description' image scale"
+msgstr "Escala de la imagen de 'Description'"
+
+#: ./leadimageprefs.py:173
+msgid "Content Lead Image Settings"
+msgstr "Configuración de imagen de cabecera"
+
+#: ./leadimageprefs.py:171
+msgid "Content Lead Image Settings Form"
+msgstr "Formulario de configuración de la imagen de cabecera"
+
+msgid "Folder lead-image view"
+msgstr "Vista con imagen de cabecera"
+
+#: ./leadimageprefs.py:44
+msgid "Height"
+msgstr "Altura"
+
+#: ./extender.py:59
+msgid "Lead image"
+msgstr "Imagen de cabecera"
+
+#: ./extender.py:74
+msgid "Lead image caption"
+msgstr "Leyenda de imagen de cabecera"
+
+#: ./leadimageprefs.py:45
+msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Altura para escala. El valor especificado se usará como altura en la escala para generar la imagen de cabecera"
+
+#: ./leadimageprefs.py:39
+msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Ancho para escala El valor especificado se usará como ancho en la escala para generar la imagen de cabecera"
+
+#: ./leadimageprefs.py:58
+msgid "Please select scale which will be used in the body."
+msgstr "Por favor, seleccione la escala que se usará en el cuerpo de texto (body)"
+
+#: ./leadimageprefs.py:51
+msgid "Please select scale which will be used next to Description field."
+msgstr "Por favor, seleccione la escala que se usará en la descripción (Description)"
+
+#: ./leadimageprefs.py:31
+msgid "Portal types"
+msgstr "Tipos de contenido"
+
+#: ./leadimageprefs.py:32
+msgid "Portal types lead image may be attached to."
+msgstr "Tipos de contenidos a los que se podrá asociar una imagen de cabecera"
+
+#: ./leadimageprefs.py:172
+msgid "Select properties for Content Lead Image"
+msgstr "Seleccione las propiedades para la imagen de cabecera"
+
+#: ./leadimageprefs.py:68
+msgid "Show image in body area"
+msgstr "Mostrar la imagen en el cuerpo de texto"
+
+#: ./leadimageprefs.py:64
+msgid "Show image next to Description field"
+msgstr "Mostrar la imagen cerca de la Descripción"
+
+msgid "View with lead images displayed"
+msgstr "Mostrar con imágenes de cabecera"
+
+#: ./leadimageprefs.py:38
+msgid "Width"
+msgstr "Ancho"
+
+#: ./extender.py:60
+msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
+msgstr "Puede subir una imagen de cabecera. Esta imagen se mostrará sobre el contenido. Además será escalada automáticamente al tamaño especificado en el panel de control."
+
+#: ./extender.py:75
+msgid "You may enter lead image caption text"
+msgstr "Puede introducir una leyenda para la imagen"
+
+#. Default: "Recreate scales"
+#: ./leadimageprefs.py:199
+#, fuzzy
+msgid "label_recreate_scales"
+msgstr "label_recreate_scales"
+
+#. Default: "${number} scales recreated."
+#: ./leadimageprefs.py:228
+#, fuzzy
+msgid "text_scales_recreated"
+msgstr "text_scales_recreated"

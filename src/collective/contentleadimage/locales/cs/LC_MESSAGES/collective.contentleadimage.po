@@ -1,0 +1,108 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contentleadimage\n"
+"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"PO-Revision-Date: 2008-09-21 22:14+0100\n"
+"Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
+"Language-Team: Czech <cs@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: cs\n"
+"Language-Name: Czech\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.contentleadimage\n"
+
+#: ./leadimageprefs.py:57
+msgid "'Body' image scale"
+msgstr "Rozměr použitý při zobrazení v těle položky"
+
+#: ./leadimageprefs.py:50
+msgid "'Description' image scale"
+msgstr "Rozměr použitý při zobrazení v popisu položky"
+
+#: ./leadimageprefs.py:173
+msgid "Content Lead Image Settings"
+msgstr "Nastavení průvodních obrázků"
+
+#: ./leadimageprefs.py:171
+msgid "Content Lead Image Settings Form"
+msgstr "Formulář pro nastavení průvodních obrázků"
+
+msgid "Folder lead-image view"
+msgstr "Zobrazení s průvodními obrázky"
+
+#: ./leadimageprefs.py:44
+msgid "Height"
+msgstr "Výška"
+
+#: ./extender.py:59
+msgid "Lead image"
+msgstr "Průvodní obrázek"
+
+#: ./extender.py:74
+msgid "Lead image caption"
+msgstr "Titulek obrázku"
+
+#: ./leadimageprefs.py:45
+msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Vlastní rozměr obrázku. Zde uvedená hodnota bude použita při generování rozměru 'leadimage'."
+
+#: ./leadimageprefs.py:39
+msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Vlastní rozměr obrázku. Zde uvedená hodnota bude použita při generování rozměru 'leadimage'."
+
+#: ./leadimageprefs.py:58
+msgid "Please select scale which will be used in the body."
+msgstr "Vyberte prosím rozměr, který bude použit při zobrazení v těle položky."
+
+#: ./leadimageprefs.py:51
+msgid "Please select scale which will be used next to Description field."
+msgstr "Vyberte prosím rozměr, který bude použit při zobrazení v popisu položky."
+
+#: ./leadimageprefs.py:31
+msgid "Portal types"
+msgstr "Typy položek"
+
+#: ./leadimageprefs.py:32
+msgid "Portal types lead image may be attached to."
+msgstr "Typy položek ke kterým je možné připojit průvodní obrázek."
+
+#: ./leadimageprefs.py:172
+msgid "Select properties for Content Lead Image"
+msgstr "Zde můžete nastavit vlastnosti průvodních obrázků."
+
+#: ./leadimageprefs.py:68
+msgid "Show image in body area"
+msgstr "Zobrazit obrázek na začátku textu položky."
+
+#: ./leadimageprefs.py:64
+msgid "Show image next to Description field"
+msgstr "Zobrazit obrázek vedle popisu položky."
+
+msgid "View with lead images displayed"
+msgstr "Zobrazení s průvodními obrázky"
+
+#: ./leadimageprefs.py:38
+msgid "Width"
+msgstr "Šířka"
+
+#: ./extender.py:60
+msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
+msgstr "Zde můžete nahrát průvodní obrázek. Tento obrázek bude zobrazen u popisu položky. Obrázek bude automaticky změnšen na velikost nastavenou správcem portálu."
+
+#: ./extender.py:75
+msgid "You may enter lead image caption text"
+msgstr "Zde můžete zadat titulek obrázku, který se zobrazí pod obrázkem, pokud je zobrazen v těle položky."
+
+#. Default: "Recreate scales"
+#: ./leadimageprefs.py:199
+msgid "label_recreate_scales"
+msgstr "Přegenerovat obrázky"
+
+#. Default: "${number} scales recreated."
+#: ./leadimageprefs.py:228
+msgid "text_scales_recreated"
+msgstr "Počet přegenerovaných obrázků: ${number}"
+

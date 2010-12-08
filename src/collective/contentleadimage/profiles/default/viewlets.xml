@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object>
+
+ <order manager="plone.belowcontenttitle" skinname="Plone Default">
+  <viewlet name="collective.contentleadimage.thumbnail" insert-before="*" />
+ </order>
+
+ <order manager="plone.abovecontentbody" skinname="Plone Default">
+  <viewlet name="collective.contentleadimage.full" insert-after="plone.presentation" />
+ </order>
+
+ <hidden manager="plone.belowcontenttitle" skinname="Plone Default">
+  <viewlet name="collective.contentleadimage.thumbnail"/>
+ </hidden>
+
+</object>

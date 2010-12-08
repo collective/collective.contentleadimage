@@ -1,0 +1,111 @@
+# Rainer Schaffer <rainer.schaffer@tu-dresden.de>, 2008.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.contentleadimage-de\n"
+"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"PO-Revision-Date: 2010-05-07 11:48+0100\n"
+"Last-Translator: \n"
+"Language-Team: German <kde-i18n-de@lists.kde.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: de\n"
+"Language-Name: Deutsch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.contentleadimage\n"
+"X-Generator: LoKalize 0.2\n"
+"X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
+
+#: ./leadimageprefs.py:57
+msgid "'Body' image scale"
+msgstr "'Body' afbeeldings schaal"
+
+#: ./leadimageprefs.py:50
+msgid "'Description' image scale"
+msgstr "'Omschrijving' afbeeldings schaal"
+
+#: ./leadimageprefs.py:173
+msgid "Content Lead Image Settings"
+msgstr "Content Lead Afbeelding Opties"
+
+#: ./leadimageprefs.py:171
+msgid "Content Lead Image Settings Form"
+msgstr "Content Lead Afbeelding Formulier"
+
+msgid "Folder lead-image view"
+msgstr "Map lead-afbeelding weergaven"
+
+#: ./leadimageprefs.py:44
+msgid "Height"
+msgstr "Hoogte"
+
+#: ./extender.py:59
+msgid "Lead image"
+msgstr "Lead afbeelding"
+
+#: ./extender.py:74
+msgid "Lead image caption"
+msgstr "Lead afbeelding caption"
+
+#: ./leadimageprefs.py:45
+msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead afbeelding schaal hoogte. Waarde aangegeven in dit veld wordt gebruikt voor het genereren van de geschaalde 'leadimage' afbeelding."
+
+#: ./leadimageprefs.py:39
+msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
+msgstr "Lead afbeelding schaal breedte. Waarde aangegeven in dit veld wordt gebruikt voor het genereren van de geschaalde 'leadimage' afbeelding."
+
+#: ./leadimageprefs.py:58
+msgid "Please select scale which will be used in the body."
+msgstr "Selecteer schaal welke wordt gebruikt in het content vlak."
+
+#: ./leadimageprefs.py:51
+msgid "Please select scale which will be used next to Description field."
+msgstr "Selecteer schaal welke wordt gebruikt naast het omschrijving veld."
+
+#: ./leadimageprefs.py:31
+msgid "Portal types"
+msgstr "Portal types"
+
+#: ./leadimageprefs.py:32
+msgid "Portal types lead image may be attached to."
+msgstr "Portal types waaraan lead afbeelding gekoppeld is."
+
+#: ./leadimageprefs.py:172
+msgid "Select properties for Content Lead Image"
+msgstr "Selecteer opties voor Lead Afbeelding"
+
+#: ./leadimageprefs.py:68
+msgid "Show image in body area"
+msgstr "Toon afbeelding in content vlak"
+
+#: ./leadimageprefs.py:64
+msgid "Show image next to Description field"
+msgstr "Toon afbeelding naast Omschrijving veld"
+
+msgid "View with lead images displayed"
+msgstr "Weergave met lead afbeelding getoond"
+
+#: ./leadimageprefs.py:38
+msgid "Width"
+msgstr "Breedte"
+
+#: ./extender.py:60
+msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
+msgstr "U kunt een lead afbeelding uploaden. Deze afbeelding wordt boven de content weergegeven. De geuploade afbeelding wordt automatisch geschaald naar de grootte aangegeven in het control panel."
+
+#: ./extender.py:75
+msgid "You may enter lead image caption text"
+msgstr "Hier kunt u een caption tekst voor de afbeeling invoeren"
+
+#. Default: "Recreate scales"
+#: ./leadimageprefs.py:199
+msgid "label_recreate_scales"
+msgstr "Schaal opnieuw"
+
+#. Default: "${number} scales recreated."
+#: ./leadimageprefs.py:228
+msgid "text_scales_recreated"
+msgstr "${number} opnieuw geschaald"
+

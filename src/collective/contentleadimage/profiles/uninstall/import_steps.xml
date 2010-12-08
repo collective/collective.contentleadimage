@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+ <import-step id="cli-uninstall-configlet"
+              version="20081014-1"
+              handler="collective.contentleadimage.setuphandlers.removeConfiglet"
+              title="Remove Content lead image configlet">Removes the content lead image configlet</import-step>
+</import-steps>

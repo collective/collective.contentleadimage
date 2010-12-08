@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel"
+        xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+       i18n:domain="collective.contentleadimage">
+  <configlet title="Content Lead Image Settings"
+             action_id="ContentLeadImage"
+             appId="collective.contentleadimage"
+             category="Products"
+             conditional_expression=""
+             icon_expr="string:${portal_url}/logoIcon.png"
+             url_expr="string:${portal_url}/@@contentleadimage-controlpanel"
+             visible="True"
+             i18n:attributes="title">
+    <permission>Manage Portal</permission>
+  </configlet>
+</object>

@@ -1,0 +1,16 @@
+<div class="newsImageContainer" i18n:domain="collective.contentleadimage"
+     tal:define="tag python: view.bodyTag(css_class='newsImage')"
+     tal:condition="tag">
+
+    <a href="#"
+       tal:attributes="href string:${context/absolute_url}/leadImage/image_view_fullscreen"
+       id="parent-fieldname-leadImage">
+       <img tal:replace="structure tag" src="" alt="" />
+    </a>
+    <p class="discreet">
+        <metal:field use-macro="view/caption">
+        Image Caption
+        </metal:field>
+    </p>
+
+</div>
