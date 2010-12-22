@@ -13,7 +13,7 @@ There is folder_leadimage_view page template, which can be used to list all item
 together with images attached.
 
 There is configuration control panel, where you can set maximum width and height of the uploaded
-images. The widht and height is applied on each image upload (image is automatically resized).
+images. The width and height is applied on each image upload (image is automatically resized).
 
 There is FieldIndex and metadata in portal_catalog: hasContentLeadImage (True/False).
 
@@ -109,6 +109,23 @@ Tests of the package
     >>> image = PIL.Image.open(StringIO(field.getScale(doc, 'listing').data))
     >>> image.size
     (16, 16)
+    
+    Our objects tell us the urls to purge
+    
+    >>> from Products.CacheSetup.interfaces import IPurgeUrls
+    >>> from zope.component import subscribers
+    >>> from Acquisition import aq_inner
+    >>> print '\n'.join([str('\n'.join(adapter.getRelativeUrls())) for adapter in subscribers([aq_inner(doc)], IPurgeUrls)])
+    /plone/Members/test_user_1_/doc1/leadImage
+    /plone/Members/test_user_1_/doc1/leadImage_large
+    /plone/Members/test_user_1_/doc1/leadImage_mini
+    /plone/Members/test_user_1_/doc1/leadImage_thumb
+    /plone/Members/test_user_1_/doc1/leadImage_listing
+    /plone/Members/test_user_1_/doc1/leadImage_tile
+    /plone/Members/test_user_1_/doc1/leadImage_preview
+    /plone/Members/test_user_1_/doc1/leadImage_leadimage
+    /plone/Members/test_user_1_/doc1/leadImage_icon
+    
 
     Finally remove the image
 

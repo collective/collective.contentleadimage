@@ -51,6 +51,12 @@
     <class class="Products.Archetypes.BaseObject.BaseObject">
           <implements interface=".interfaces.ILeadImageable" />
     </class>
+    
+    <subscriber
+       provides="Products.CacheSetup.interfaces.IPurgeUrls"
+       factory=".purgeurls.LeadImagePurge"
+       for=".interfaces.ILeadImageable"
+       />
 
 
     <genericsetup:registerProfile zcml:condition="have plone-4"
