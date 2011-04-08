@@ -46,6 +46,8 @@ def migrateToBlobs(context):
                 if extfield.getName() == IMAGE_FIELD_NAME:
                     # ok, retrieve the value
                     value = extfield.get(obj)
-                    field.set(obj, value)
+                    if hasattr(extfield, 'removeScales'):
+                            extfield.removeScales(obj)
+                    field.getMutator(obj)(value)
     logger.info('Migration finished')
                     

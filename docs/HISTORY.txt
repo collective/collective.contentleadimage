@@ -4,6 +4,9 @@ Changelog
     - mtool variable definition added
       [kroman0]
 
+    - remove scaled images during migration
+      [otacon]
+
 1.3.0 - 2010/09/15
 
     - fixed migration to blobs. Thanks to David Jonas.
