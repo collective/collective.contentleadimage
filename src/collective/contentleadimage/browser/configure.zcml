@@ -47,6 +47,7 @@
          template="folder_leadimage_view.pt"
          layer="..interfaces.ILeadImageSpecific"
          permission="zope2.View"
+         allowed_attributes="tag"
     />
     
     <browser:menuItem
