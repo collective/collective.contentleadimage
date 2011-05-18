@@ -52,7 +52,7 @@
           <implements interface=".interfaces.ILeadImageable" />
     </class>
     
-    <subscriber
+    <subscriber zcml:condition="installed Products.CacheSetup"
        provides="Products.CacheSetup.interfaces.IPurgeUrls"
        factory=".purgeurls.LeadImagePurge"
        for=".interfaces.ILeadImageable"
