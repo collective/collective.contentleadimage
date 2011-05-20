@@ -27,14 +27,25 @@ class TestCase(ptc.PloneTestCase):
     
 
 def test_suite():
-    return unittest.TestSuite([
 
+    suite = [
         # Integration tests that use PloneTestCase
         ztc.ZopeDocFileSuite(
             'README.txt', package='collective.contentleadimage',
             test_class=TestCase),
+        ]
 
-        ])
+    try:
+        from Products.CacheSetup.interfaces import IPurgeUrls
+        suite.append(
+            ztc.ZopeDocFileSuite(
+                'tests/cachesetup.txt', package='collective.contentleadimage',
+                test_class=TestCase)
+        )
+    except ImportError:
+        pass
+    
+    return unittest.TestSuite(suite)
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')

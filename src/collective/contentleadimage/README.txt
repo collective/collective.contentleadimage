@@ -27,6 +27,7 @@ Tests of the package
     >>> from collective.contentleadimage.interfaces import ILeadImageable
     >>> from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
     >>> from collective.contentleadimage.config import IMAGE_FIELD_NAME
+    >>> from collective.contentleadimage.extender import HAS_BLOB
     >>> current_file = globals()['__file__']
     >>> tests_dir, _ = os.path.split(current_file)
     >>> tests_dir = os.path.join(tests_dir, 'tests')
@@ -72,8 +73,8 @@ Tests of the package
     >>> raw_image = open(test_image, 'rb').read()
 
     >>> field = doc.getField(IMAGE_FIELD_NAME)
-    >>> field
-    <Field leadImage(blob:rw)>
+    >>> field.type == 'image'
+    True
     >>> field.set(doc, raw_image)
     >>> stored = field.get(doc)
 
@@ -109,22 +110,6 @@ Tests of the package
     >>> image = PIL.Image.open(StringIO(field.getScale(doc, 'listing').data))
     >>> image.size
     (16, 16)
-    
-    Our objects tell us the urls to purge
-    
-    >>> from Products.CacheSetup.interfaces import IPurgeUrls
-    >>> from zope.component import subscribers
-    >>> from Acquisition import aq_inner
-    >>> print '\n'.join([str('\n'.join(adapter.getRelativeUrls())) for adapter in subscribers([aq_inner(doc)], IPurgeUrls)])
-    /plone/Members/test_user_1_/doc1/leadImage
-    /plone/Members/test_user_1_/doc1/leadImage_large
-    /plone/Members/test_user_1_/doc1/leadImage_mini
-    /plone/Members/test_user_1_/doc1/leadImage_thumb
-    /plone/Members/test_user_1_/doc1/leadImage_listing
-    /plone/Members/test_user_1_/doc1/leadImage_tile
-    /plone/Members/test_user_1_/doc1/leadImage_preview
-    /plone/Members/test_user_1_/doc1/leadImage_leadimage
-    /plone/Members/test_user_1_/doc1/leadImage_icon
     
 
     Finally remove the image
