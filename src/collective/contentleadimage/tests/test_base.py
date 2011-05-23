@@ -12,7 +12,7 @@ ptc.setupPloneSite()
 
 import collective.contentleadimage
 
-class TestCase(ptc.PloneTestCase):
+class TestCase(ptc.FunctionalTestCase):
     class layer(PloneSite):
         @classmethod
         def setUp(cls):
@@ -24,7 +24,7 @@ class TestCase(ptc.PloneTestCase):
         @classmethod
         def tearDown(cls):
             pass
-    
+
 
 def test_suite():
 
@@ -44,7 +44,7 @@ def test_suite():
         )
     except ImportError:
         pass
-    
+
     return unittest.TestSuite(suite)
 
 if __name__ == '__main__':

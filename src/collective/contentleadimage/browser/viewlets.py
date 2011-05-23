@@ -20,7 +20,6 @@ class LeadImageViewlet(ViewletBase):
         context = aq_inner(self.context)
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None and \
-          field.getFilename(context) is not None and \
             field.get_size(context) != 0:
                 scale = self.prefs.body_scale_name
                 return field.tag(context, scale=scale, css_class=css_class)
@@ -31,11 +30,15 @@ class LeadImageViewlet(ViewletBase):
         context = aq_inner(self.context)
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None and \
-          field.getFilename(context) is not None and \
             field.get_size(context) != 0:
                 scale = self.prefs.desc_scale_name
                 return field.tag(context, scale=scale, css_class=css_class)
         return ''
+
+    def hasCaption(self):
+        context = aq_inner(self.context)
+        field = context.getField(IMAGE_CAPTION_FIELD_NAME)
+        return field.get_size(self.context) != 0
 
     def caption(self):
         context = aq_inner(self.context)
