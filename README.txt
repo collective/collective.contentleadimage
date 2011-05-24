@@ -14,7 +14,7 @@ There is folder_leadimage_view page template, which can be used to list all
 items in the folder together with images attached.
 
 There is configuration control panel, where you can set maximum width and height
-of the uploaded images. The widht and height is applied on each image upload
+of the uploaded images. The width and height is applied on each image upload
 (image is automatically resized). You can specify smaller width and height 
 which is used as image preview in the below content title viewlet (next to 
 content Description). Large image is used in the above content body viewlet
