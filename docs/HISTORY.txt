@@ -1,5 +1,7 @@
 Changelog
 =========
+1.3.3 - unreleased
+    - Adapted to Plone 4.1 [davidjonas]
 
 1.3.2 - 2011/05/24
 

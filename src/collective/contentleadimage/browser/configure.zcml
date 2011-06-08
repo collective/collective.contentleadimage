@@ -5,6 +5,7 @@
     i18n_domain="collective.contentleadimage">
     
     <include package="plone.app.contentmenu" />
+    <include package="Products.CMFCore" file="permissions.zcml" />
     
     <!-- Custom viewlet -->
     <browser:viewlet
