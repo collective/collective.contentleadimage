@@ -15,11 +15,20 @@ class LeadImagePurge(object):
         """
         context = self.context
         field = context.getField(IMAGE_FIELD_NAME)
+
+        urls = []
         if field:
-            url = '/'.join(context.getPhysicalPath())
+
+            path_parts = context.getPhysicalPath()
+            if tuple(path_parts[:1]) == ("",):
+                # remove leading blank part to prevent returning a non relitave url
+                path_parts = path_parts[1:]
+
+            url = '/'.join(path_parts)
             scalenames = field.getAvailableSizes(context)
-            return ['%s/%s'%(url,IMAGE_FIELD_NAME)]+['%s/%s_'%(url,IMAGE_FIELD_NAME) + s for s in scalenames]
-        return []
+            urls = ['%s/%s'%(url,IMAGE_FIELD_NAME)]+['%s/%s_'%(url,IMAGE_FIELD_NAME) + s for s in scalenames]
+
+        return urls
 
     def getAbsoluteUrls(self, relative_urls):
         """Return a list of absolute URLs that should be purged.
