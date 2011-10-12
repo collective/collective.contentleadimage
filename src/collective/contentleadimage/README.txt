@@ -23,7 +23,7 @@ Tests of the package
 Set up our test browser instance, and log into the portal as an admin.
 
     >>> import StringIO
-    >>> from Products.Five.testbrowser import Browser
+    >>> from Testing.testbrowser import Browser
     >>> browser = Browser()
     >>> browser.handleErrors = False
     >>> portal_url = self.portal.absolute_url()
