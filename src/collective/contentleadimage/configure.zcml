@@ -85,13 +85,13 @@
         provides="Products.GenericSetup.interfaces.EXTENSION"
     />
 
-    <!--genericsetup:importStep
+    <genericsetup:importStep
          name="contentleadimage-various"
          title="Various import steps for colective.contentleadimage"
          description=""
          handler=".setuphandlers.importVarious">
         <depends name="propertiestool"/>
-    </genericsetup:importStep-->
+    </genericsetup:importStep>
 
     <genericsetup:upgradeStep
         title="Upgrade Content Lead Image Product"

@@ -1,7 +1,20 @@
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPropertiesTool
-from Products.ZCatalog.ProgressHandler import ZLogHandler
 from collective.contentleadimage import config
+
+def setupCatalog(portal, indexes=dict(), metadata=list()):
+    catalog = getToolByName(portal, 'portal_catalog')
+
+    idxs = catalog.indexes()
+    mtds = catalog.schema()
+    
+    for index in indexes.keys():
+        if index not in idxs:
+            catalog.addIndex(index, indexes[index])
+    
+    for mt in metadata:
+        if mt not in mtds:
+            catalog.addColumn(mt)
+
 
 def importVarious(self):
     if self.readDataFile('contentleadimage.txt') is None:
@@ -20,8 +33,8 @@ def importVarious(self):
     if not props.hasProperty('body_scale_name'):
         props.manage_addProperty('body_scale_name', 'mini', 'string')
         
-    ctool = getToolByName(portal, 'portal_catalog')
-    ctool.reindexIndex(['hasContentLeadImage'], portal.REQUEST, pghandler=ZLogHandler())
+    setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex'),
+                         metadata=['hasContentLeadImage'])
     
 def removeConfiglet(self):
     if self.readDataFile('cli-uninstall.txt') is None:
