@@ -1,14 +1,14 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.3.3dev'
+version = '1.3.4'
 
 tests_require = ['collective.testcaselayer']
 
 setup(name='collective.contentleadimage',
       version=version,
       description="Adds lead image to any content in plone site",
-      long_description=open("README.txt").read() + "\n\n" +
+      long_description=open("README.rst").read() + "\n\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
@@ -24,7 +24,7 @@ setup(name='collective.contentleadimage',
       url='http://pypi.python.org/pypi/collective.contentleadimage',
       license='GPL',
       packages=find_packages('src', exclude=['ez_setup']),
-      package_dir = {'':'src'},
+      package_dir={'': 'src'},
       namespace_packages=['collective'],
       include_package_data=True,
       zip_safe=False,
