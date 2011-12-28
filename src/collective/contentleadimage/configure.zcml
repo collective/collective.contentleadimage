@@ -10,6 +10,13 @@
     <five:registerPackage package="." initialize=".initialize" />
     <i18n:registerTranslations directory="locales" />
 
+    <!-- Conditional to make compatable with pre 'permissions.zcml' Plone.
+        Choice of zope.security.zcml.IPermissionDirective to test is slightly abitary    -->
+    <configure zcml:condition="installed zope.security.zcml.IPermissionDirective">
+       <include package="Products.CMFCore" file="permissions.zcml" />
+    </configure>
+
+
     <include package=".browser" />
     <include package="archetypes.schemaextender" />
 
