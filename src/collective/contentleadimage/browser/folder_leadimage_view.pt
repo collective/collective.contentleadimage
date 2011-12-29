@@ -50,6 +50,7 @@
                             normalizeString nocall:context/@@plone/normalizeString;
                             isAnon context/@@plone_portal_state/anonymous;
                             toLocalizedTime nocall: context/@@plone/toLocalizedTime;
+                            wtool wtool|context/portal_workflow;
                             batch folderContents;">
         <tal:listing condition="folderContents">
 
