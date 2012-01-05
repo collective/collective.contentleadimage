@@ -1,6 +1,10 @@
 Changelog
 =========
 
+1.3.5 - Unreleased
+
+    - Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
+
 1.3.4 - 2011/12/28
 
     - Fixed adaption to Plone 4.1 [naro]
