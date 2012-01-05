@@ -37,7 +37,7 @@ class ILeadImagePrefsForm(Interface):
                           description=_(u'Portal types lead image may be attached to.'),
                           missing_value=tuple(),
                           value_type=schema.Choice(
-                                   vocabulary="plone.app.vocabularies.UserFriendlyTypes"),
+                                   vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes"),
                           required=False)
     
     image_width = schema.Int(title=_(u'Width'),
