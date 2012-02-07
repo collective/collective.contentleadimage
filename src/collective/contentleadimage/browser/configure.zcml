@@ -24,6 +24,7 @@
         class=".viewlets.LeadImageViewlet"
         manager="plone.app.layout.viewlets.interfaces.IAboveContentBody"
         template="leadimage-body.pt"
+        view="plone.app.layout.globals.interfaces.IViewView"
         layer="..interfaces.ILeadImageSpecific"
         permission="zope2.View"
     />
