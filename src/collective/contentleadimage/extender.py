@@ -1,23 +1,41 @@
-from Products.Archetypes.public import ImageField
-from Products.Archetypes.public import StringField
-from Products.Archetypes.public import StringWidget
-from archetypes.schemaextender.field import ExtensionField
+# Zope imports
 from zope.component import adapts
 from zope.component import getUtility
 from zope.interface import implements
-from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
-from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
-from Products.Archetypes.public import ImageWidget
-from Products.Archetypes.public import AnnotationStorage
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.ATContentTypes.configuration import zconf
-
 from zope.publisher.interfaces import IPublishTraverse
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
+
+# Plone imports
+try:
+    # Multilingual support
+    from Products.LinguaPlone.public import ImageField
+    from Products.LinguaPlone.public import StringField
+    from Products.LinguaPlone.public import StringWidget
+    from Products.LinguaPlone.public import ImageWidget
+    from Products.LinguaPlone.public import AnnotationStorage
+except ImportError:
+    from Products.Archetypes.public import ImageField
+    from Products.Archetypes.public import StringField
+    from Products.Archetypes.public import StringWidget
+    from Products.Archetypes.public import ImageWidget
+    from Products.Archetypes.public import AnnotationStorage
+
+from Products.ATContentTypes.configuration import zconf
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.validation import V_REQUIRED
+try:
+    from plone.app.blob.field import ImageField as BlobImageField
+    HAS_BLOB = True
+except ImportError:
+    HAS_BLOB = False
 
+# Third party
+from archetypes.schemaextender.field import ExtensionField
+from archetypes.schemaextender.interfaces import IOrderableSchemaExtender
+from archetypes.schemaextender.interfaces import IBrowserLayerAwareExtender
 
+# Local
 from collective.contentleadimage.interfaces import ILeadImageable
 from collective.contentleadimage.interfaces import ILeadImageSpecific
 from collective.contentleadimage import LeadImageMessageFactory as _
@@ -25,11 +43,7 @@ from collective.contentleadimage.config import IMAGE_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_SIZES
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
-try:
-    from plone.app.blob.field import ImageField as BlobImageField
-    HAS_BLOB = True
-except ImportError:
-    HAS_BLOB = False
+
 
 class LeadimageCaptionField(ExtensionField, StringField):
     """ A trivial string field """
@@ -57,13 +71,14 @@ if HAS_BLOB:
 captionField = LeadimageCaptionField(IMAGE_CAPTION_FIELD_NAME,
         required=False,
         searchable=False,
-        storage = AnnotationStorage(),
-        languageIndependent = False,
-        widget = StringWidget(
+        storage=AnnotationStorage(),
+        languageIndependent=False,
+        widget=StringWidget(
                     label=_(u"Lead image caption"),
                     description=_(u"You may enter lead image caption text"),
                 ),
     )
+
 
 class LeadImageExtender(object):
     adapts(ILeadImageable)
@@ -71,20 +86,18 @@ class LeadImageExtender(object):
 
     layer = ILeadImageSpecific
 
-
-
     fields = [
         LeadimageImageField(IMAGE_FIELD_NAME,
-          required = False,
-          storage = AnnotationStorage(migrate=True),
-          languageIndependent = True,
-          max_size = zconf.ATNewsItem.max_image_dimension,
-          swallowResizeExceptions = zconf.swallowImageResizeExceptions.enable,
-          pil_quality = zconf.pil_config.quality,
-          pil_resize_algo = zconf.pil_config.resize_algo,
-          validators = (('isNonEmptyFile', V_REQUIRED),
+          required=False,
+          storage=AnnotationStorage(migrate=True),
+          languageIndependent=True,
+          max_size=zconf.ATNewsItem.max_image_dimension,
+          swallowResizeExceptions=zconf.swallowImageResizeExceptions.enable,
+          pil_quality=zconf.pil_config.quality,
+          pil_resize_algo=zconf.pil_config.resize_algo,
+          validators=(('isNonEmptyFile', V_REQUIRED),
                                ('checkNewsImageMaxSize', V_REQUIRED)),
-          widget = ImageWidget(
+          widget=ImageWidget(
                          label=_(u"Lead image"),
                          description=_(u"You can upload lead image. This image "
                                        u"will be displayed above the content. "
@@ -100,7 +113,7 @@ class LeadImageExtender(object):
         ]
 
     def __init__(self, context):
-         self.context = context
+        self.context = context
 
     def getFields(self):
         portal = getUtility(IPloneSiteRoot)
@@ -128,10 +141,10 @@ class LeadImageExtender(object):
                 desc_index = default.index('title')
             if desc_index >= 0 and (IMAGE_FIELD_NAME in default):
                 default.remove(IMAGE_FIELD_NAME)
-                default.insert(desc_index+1, IMAGE_FIELD_NAME)
+                default.insert(desc_index + 1, IMAGE_FIELD_NAME)
                 if IMAGE_CAPTION_FIELD_NAME in default:
                     default.remove(IMAGE_CAPTION_FIELD_NAME)
-                    default.insert(desc_index+2, IMAGE_CAPTION_FIELD_NAME)
+                    default.insert(desc_index + 2, IMAGE_CAPTION_FIELD_NAME)
         return original
 
 if HAS_BLOB:
@@ -139,16 +152,16 @@ if HAS_BLOB:
 
         fields = [
             LeadimageBlobImageField(IMAGE_FIELD_NAME,
-                required = False,
-                storage = AnnotationStorage(migrate=True),
-                languageIndependent = False,
-                max_size = zconf.ATNewsItem.max_image_dimension,
-                swallowResizeExceptions = zconf.swallowImageResizeExceptions.enable,
-                pil_quality = zconf.pil_config.quality,
-                pil_resize_algo = zconf.pil_config.resize_algo,
-                validators = (('isNonEmptyFile', V_REQUIRED),
+                required=False,
+                storage=AnnotationStorage(migrate=True),
+                languageIndependent=True,
+                max_size=zconf.ATNewsItem.max_image_dimension,
+                swallowResizeExceptions=zconf.swallowImageResizeExceptions.enable,
+                pil_quality=zconf.pil_config.quality,
+                pil_resize_algo=zconf.pil_config.resize_algo,
+                validators=(('isNonEmptyFile', V_REQUIRED),
                               ('checkNewsImageMaxSize', V_REQUIRED)),
-                widget = ImageWidget(
+                widget=ImageWidget(
                            label=_(u"Lead image"),
                            description=_(u"You can upload lead image. This image "
                                          u"will be displayed above the content. "
@@ -162,7 +175,6 @@ if HAS_BLOB:
             captionField,
 
             ]
-
 
 
 class LeadImageTraverse(DefaultPublishTraverse):
