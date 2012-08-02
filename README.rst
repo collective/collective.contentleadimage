@@ -64,7 +64,7 @@ Using collective.contentleadimage with plone.app.scaling
 provides dynamic image scales for all Plone images since Plone version 4.1.
 
 Below is an example how to use ``@@images`` with with portal_catalog
-``hasLeadImage`` index to show a custom sized lead image scale
+``hasContentLeadImage`` metadata column to show a custom sized lead image scale
 in a folder listing.
 
 Example page template snipper from a folder listing::
