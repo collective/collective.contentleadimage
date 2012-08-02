@@ -1,6 +1,8 @@
 collective.contentleadimage Package Readme
 ==========================================
 
+.. contents :: :local:
+
 Overview
 --------
 
@@ -54,3 +56,27 @@ Re-run buildout, e.g. with::
     $ ./bin/buildout
         
 More detailed installation instructions may be found in docs/INSTALL.txt.
+
+Using collective.contentleadimage with plone.app.scaling
+----------------------------------------------------------
+
+`plone.app.imaging <http://plone.org/products/plone.app.imaging/>`_ 
+provides dynamic image scales for all Plone images since Plone version 4.1.
+
+Below is an example how to use ``@@images`` with with portal_catalog
+``hasLeadImage`` index to show a custom sized lead image scale
+in a folder listing.
+
+Example page template snipper from a folder listing::
+
+   <div class="tileItem visualIEFloatFix"
+                     tal:define="item_has_leadimage item/hasContentLeadImage;
+                                       item_object item/getObject;
+                                       item_hide_from_nav item/exclude_from_nav;
+                                   "
+                      tal:condition="not:item_hide_from_nav">
+
+                        <img tal:condition="exists:item_has_leadimage"
+                             tal:define="scale item_object/@@images; img python:scale.scale('leadImage', width=280, height=280)"
+                             tal:replace="structure python: img.tag() if img else None" />
+       
