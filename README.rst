@@ -80,3 +80,48 @@ Example page template snipper from a folder listing::
                              tal:define="scale item_object/@@images; img python:scale.scale('leadImage', width=280, height=280)"
                              tal:replace="structure python: img.tag() if img else None" />
        
+Here is another example how Event content type view template is modified to directly 
+display lead image next to the event details table.
+The modification was done using ``z3c.jbot`` and overriding the template as ``Products.CMFPlone.skins.plone_content.event_view.pt``.
+
+The template head::
+
+    <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+          xmlns:tal="http://xml.zope.org/namespaces/tal"
+          xmlns:metal="http://xml.zope.org/namespaces/metal"
+          xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          lang="en"
+          metal:use-macro="context/main_template/macros/master"
+          i18n:domain="plone">
+    <body>
+
+    <metal:content-core fill-slot="content-core">
+        <metal:content-core define-macro="content-core"
+                            tal:define="kssClassesView context/@@kss_field_decorator_view;
+                                        getKssClasses nocall:kssClassesView/getKssClassesInlineEditable;
+                                        templateId template/getId;
+                                        toLocalizedTime nocall:context/@@plone/toLocalizedTime;">
+
+
+            <tal:comment replace="nothing">
+                <!-- Show content lead image above event details on the event page.
+
+                Match image dimensions to the event details table size.
+                -->
+            </tal:comment>
+
+            <div class="lead">
+
+            <div class="lead-image-wrapper">
+                <img tal:define="scale context/@@images; img python:scale.scale('leadImage', width=300, height=300)"
+                    tal:replace="structure python: img.tag() if img else None" />
+            </div>
+
+            <div class="eventDetails vcard">
+                <table class="vertical listing"
+                       summary="Event details" i18n:attributes="summary summary_event_details;">
+
+                    <tbody>
+
+
+
