@@ -112,10 +112,10 @@ The template head::
 
             <div class="lead">
 
-            <div class="lead-image-wrapper">
-                <img tal:define="scale context/@@images; img python:scale.scale('leadImage', width=300, height=300)"
-                    tal:replace="structure python: img.tag() if img else None" />
+            <div class="lead-image-wrapper" tal:define="scale context/@@images; img python:scale.scale('leadImage', width=300, height=300)" tal:condition="img">
+                <img tal:replace="structure python: img.tag() if img else None" />
             </div>
+
 
             <div class="eventDetails vcard">
                 <table class="vertical listing"
