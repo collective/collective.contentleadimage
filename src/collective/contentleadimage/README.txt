@@ -20,19 +20,38 @@ There is FieldIndex and metadata in portal_catalog: hasContentLeadImage (True/Fa
 Tests of the package
 --------------------
 
+Set up testing boilerplate.
+
+    >>> portal = layer['portal']
+    >>> portal['portal_skins'].default_skin = 'Plone Classic Theme'
+
+    >>> from plone.app.testing import setRoles
+    >>> from plone.app.testing import TEST_USER_ID
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> folderid = portal.invokeFactory('Folder', 'folder')
+    >>> folder = layer['portal'][folderid]
+    >>> user = portal.acl_users.getUserById(TEST_USER_ID)
+    >>> folder.changeOwnership(user)
+    >>> folder.__ac_local_roles__ = None
+    >>> folder.manage_setLocalRoles(TEST_USER_ID, ['Owner'])
+    >>> folder.reindexObjectSecurity()
+    >>> import transaction
+    >>> transaction.commit()
+
 Set up our test browser instance, and log into the portal as an admin.
 
     >>> import StringIO
-    >>> from Testing.testbrowser import Browser
-    >>> browser = Browser()
+    >>> from plone.testing.z2 import Browser
+    >>> browser = Browser(layer['app'])
     >>> browser.handleErrors = False
-    >>> portal_url = self.portal.absolute_url()
+    >>> portal_url = portal.absolute_url()
     >>> login_url = portal_url + '/login_form'
-    >>> self.portal.error_log._ignored_exceptions = ()
-    >>> from Products.PloneTestCase.setup import portal_owner, default_password
+    >>> portal.error_log._ignored_exceptions = ()
+    >>> from plone.app.testing import TEST_USER_NAME
+    >>> from plone.app.testing import TEST_USER_PASSWORD
     >>> browser.open(login_url)
-    >>> browser.getControl(name='__ac_name').value = portal_owner
-    >>> browser.getControl(name='__ac_password').value = default_password
+    >>> browser.getControl(name='__ac_name').value = TEST_USER_NAME
+    >>> browser.getControl(name='__ac_password').value = TEST_USER_PASSWORD
     >>> browser.getControl(name='submit').click()
     >>> "You are now logged in" in browser.contents
     True
@@ -41,8 +60,7 @@ Set up the rest of the boilerplate for tests.
 
     >>> import os
     >>> import PIL
-    >>> import os
-    >>> from StringIO import StringIO
+    >>> from cStringIO import StringIO
     >>> from Products.CMFCore.utils import getToolByName
     >>> from collective.contentleadimage.interfaces import ILeadImageable
     >>> from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
@@ -52,7 +70,7 @@ Set up the rest of the boilerplate for tests.
     >>> current_file = globals()['__file__']
     >>> tests_dir, _ = os.path.split(current_file)
     >>> tests_dir = os.path.join(tests_dir, 'tests')
-    >>> portal_setup = getToolByName(self.portal, 'portal_setup')
+    >>> portal_setup = getToolByName(portal, 'portal_setup')
     >>> _ = portal_setup.runAllImportStepsFromProfile('profile-collective.contentleadimage:default')
 
 Allowed types
@@ -61,40 +79,40 @@ Allowed types
 Test types which are allowed to be attached with lead image
 By default, only Document and Folder are allowed
 
-    >>> _ = self.folder.invokeFactory('Document', 'docA')
-    >>> self.folder.docA.getField(IMAGE_FIELD_NAME) is None
+    >>> _ = folder.invokeFactory('Document', 'docA')
+    >>> folder.docA.getField(IMAGE_FIELD_NAME) is None
     False
-    >>> self.folder.getField(IMAGE_FIELD_NAME) is None
+    >>> folder.getField(IMAGE_FIELD_NAME) is None
     False
-    >>> _ = self.folder.invokeFactory('File', 'fileA')
-    >>> self.folder.fileA.getField(IMAGE_FIELD_NAME) is None
+    >>> _ = folder.invokeFactory('File', 'fileA')
+    >>> folder.fileA.getField(IMAGE_FIELD_NAME) is None
     True
-    >>> _ = self.folder.invokeFactory('Link', 'linkA')
-    >>> self.folder.linkA.getField(IMAGE_FIELD_NAME) is None
+    >>> _ = folder.invokeFactory('Link', 'linkA')
+    >>> folder.linkA.getField(IMAGE_FIELD_NAME) is None
     True
 
 Login into the portal and add 'Link' to the allowed types list.
 
-    >>> self.loginAsPortalOwner()
-    >>> prefs = ILeadImagePrefsForm(self.portal)
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> prefs = ILeadImagePrefsForm(portal)
     >>> types = list(prefs.allowed_types)
     >>> types.append('Link')
     >>> prefs.allowed_types = types
-    >>> self.logout()
-    >>> self.login()
+    >>> setRoles(portal, TEST_USER_ID, ['Member'])
 
 Create an example 'Link' content item to check this worked.
 
-    >>> _ = self.folder.invokeFactory('Link', 'linkB')
-    >>> self.folder.linkA.getField(IMAGE_FIELD_NAME) is None
+    >>> _ = folder.invokeFactory('Link', 'linkB')
+    >>> folder.linkA.getField(IMAGE_FIELD_NAME) is None
     False
 
 Create an example 'Document' content item to apply our lead image to.
 
-    >>> _ = self.folder.invokeFactory('Document', 'doc1')
-    >>> doc = self.folder['doc1']
+    >>> _ = folder.invokeFactory('Document', 'doc1')
+    >>> doc = folder['doc1']
     >>> doc.update(title='The Document')
     >>> doc.processForm()
+    >>> transaction.commit()
 
 Applying lead images
 ~~~~~~~~~~~~~~~~~~~~
@@ -121,13 +139,13 @@ Read in our example lead image and apply it to the field on the content.
     True
     >>> field.set(doc, raw_image)
     >>> doc.reindexObject()
-    >>> doc.reindexObject(idxs=['hasContentLeadImage'])
+    >>> transaction.commit()
 
 Check that our save was successful.  We should be able to see our image 
 on the page now - only the body content lead image is currently visible.
 
     >>> browser.open(doc.absolute_url())
-    >>> prefs = ILeadImagePrefsForm(self.portal)
+    >>> prefs = ILeadImagePrefsForm(portal)
     >>> LEADIMAGE_TAG = '<img src="%s/%s' % (doc.absolute_url(), \
     ...                                              IMAGE_FIELD_NAME)
     >>> DESC_LEADIMAGE_TAG = '%s_%s' % (LEADIMAGE_TAG, prefs.desc_scale_name)
@@ -135,7 +153,7 @@ on the page now - only the body content lead image is currently visible.
     >>> DESC_LEADIMAGE_TAG in browser.contents
     False
     >>> BODY_LEADIMAGE_TAG in browser.contents
-    True 
+    True
 
 We shouldn't see a caption container though, since we don't have a caption 
 set at the moment.
@@ -152,12 +170,11 @@ By default, image max size is 640x480 px
 
 Set another size for lead images on the portal.
 
-    >>> self.loginAsPortalOwner()
-    >>> prefs = ILeadImagePrefsForm(self.portal)
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> prefs = ILeadImagePrefsForm(portal)
     >>> prefs.image_height = 20
     >>> prefs.image_width  = 20
-    >>> self.logout()
-    >>> self.login()
+    >>> setRoles(portal, TEST_USER_ID, ['Member'])
 
 And store image again
 
@@ -194,6 +211,7 @@ Set an example caption to check that it gets set.
     >>> caption_stored = caption_field.get(doc)
     >>> caption_stored == EXAMPLE_CAPTION
     True
+    >>> transaction.commit()
 
 Now, check the render to make sure the caption would be on the page.
 
@@ -212,8 +230,8 @@ of body lead image turned on.
 
 Let's check our current state.
  
-    >>> self.loginAsPortalOwner()
-    >>> prefs = ILeadImagePrefsForm(self.portal)
+    >>> setRoles(portal, TEST_USER_ID, ['Manager'])
+    >>> prefs = ILeadImagePrefsForm(portal)
     >>> prefs.viewlet_description
     False
     >>> prefs.viewlet_body
@@ -227,6 +245,7 @@ We can change these options and see that our viewlets have changed.
     >>> prefs.viewlet_body = False
     >>> prefs.viewlet_body
     False
+    >>> transaction.commit()
 
 and check the results in the browser.
 
@@ -244,6 +263,7 @@ Or we can even turn off both and not see anything.
     >>> prefs.viewlet_body = False
     >>> prefs.viewlet_body
     False
+    >>> transaction.commit()
 
     >>> browser.open(doc.absolute_url())
     >>> DESC_LEADIMAGE_TAG in browser.contents
@@ -256,6 +276,7 @@ Let's restore our original state to just have the body lead image present.
     >>> prefs.viewlet_body = True
     >>> prefs.viewlet_body
     True
+    >>> transaction.commit()
 
     >>> browser.open(doc.absolute_url())
     >>> DESC_LEADIMAGE_TAG in browser.contents
@@ -265,8 +286,7 @@ Let's restore our original state to just have the body lead image present.
 
 Reset our state of authentication on the portal.
 
-    >>> self.logout()
-    >>> self.login()
+    >>> setRoles(portal, TEST_USER_ID, ['Member'])
 
 
 Removing a lead image
@@ -281,9 +301,10 @@ result.
 
 We'll make doubly sure that our viewlet is actually still turned on.
 
-    >>> prefs = ILeadImagePrefsForm(self.portal)
+    >>> prefs = ILeadImagePrefsForm(portal)
     >>> prefs.viewlet_body
     True
+    >>> transaction.commit()
 
 And we can see that it's now not visible on our page since no image exists.
 
@@ -294,6 +315,6 @@ And we can see that it's now not visible on our page since no image exists.
 Our caption shouldn't be visible, either
 
     >>> IMAGE_CAPTION_FIELD_NAME in browser.contents
-    False 
+    False
     >>> EXAMPLE_CAPTION in browser.contents
     False

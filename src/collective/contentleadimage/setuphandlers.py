@@ -1,5 +1,6 @@
 from Products.CMFCore.utils import getToolByName
 from collective.contentleadimage import config
+from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
 def setupCatalog(portal, indexes=dict(), metadata=list()):
     catalog = getToolByName(portal, 'portal_catalog')
@@ -35,6 +36,9 @@ def importVarious(self):
         
     setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex'),
                          metadata=['hasContentLeadImage'])
+
+    prefs = ILeadImagePrefsForm(portal)
+    prefs.viewlet_description = False
     
 def removeConfiglet(self):
     if self.readDataFile('cli-uninstall.txt') is None:
