@@ -4,3 +4,5 @@ develop-eggs/
 parts/
 *.pyc
 *.egg-info
+.long-description.html
+var/

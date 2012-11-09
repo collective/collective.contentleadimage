@@ -7,6 +7,7 @@ Changelog
     - Changed collective.contentleadimage.full registrations in zcml: we should
       register the viewlet with IViewView interface restriction, in this way it 
       will be shown only in the canonical view [lucabel]
+    - Allow contententleadimage in all skins [tom_gross]
 
 1.3.4 - 2011/12/28
 
