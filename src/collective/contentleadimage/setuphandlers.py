@@ -2,6 +2,7 @@ from Products.CMFCore.utils import getToolByName
 from collective.contentleadimage import config
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
+
 def setupCatalog(portal, indexes=dict(), metadata=list()):
     catalog = getToolByName(portal, 'portal_catalog')
 
@@ -35,13 +36,14 @@ def importVarious(self):
         props.manage_addProperty('body_scale_name', 'mini', 'string')
 
     setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex'),
-                         metadata=['hasContentLeadImage'])
+                 metadata=['hasContentLeadImage'])
 
     prefs = ILeadImagePrefsForm(portal)
     prefs.viewlet_description = False
 
+
 def removeConfiglet(self):
     if self.readDataFile('cli-uninstall.txt') is None:
         return
-    portal_conf=getToolByName(self.getSite(),'portal_controlpanel')
+    portal_conf = getToolByName(self.getSite(), 'portal_controlpanel')
     portal_conf.unregisterConfiglet('ContentLeadImage')

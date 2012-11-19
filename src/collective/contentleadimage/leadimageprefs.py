@@ -34,46 +34,53 @@ except ImportError:
 class ILeadImagePrefsForm(Interface):
     """ The view for LeadImage  prefs form. """
 
-    allowed_types = schema.Tuple(title=_(u'Portal types'),
-                          description=_(u'Portal types lead image may be attached to.'),
-                          missing_value=tuple(),
-                          value_type=schema.Choice(
-                                   vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes"),
-                          required=False)
+    allowed_types = schema.Tuple(
+        title=_(u'Portal types'),
+        description=_(u'Portal types lead image may be attached to.'),
+        missing_value=tuple(),
+        value_type=schema.Choice(
+            vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes"),
+            required=False)
 
-    image_width = schema.Int(title=_(u'Width'),
-                       description=_(u'Lead image scale width. Value specified in this field '
-                                     u"is used for generating 'leadimage' scale"),
-                       default=67,
-                       required=True)
+    image_width = schema.Int(
+        title=_(u'Width'),
+        description=_(u'Lead image scale width. Value specified in this field '
+                      u"is used for generating 'leadimage' scale"),
+        default=67,
+        required=True)
 
-    image_height = schema.Int(title=_(u'Height'),
-                       description=_(u'Lead image scale height. Value specified in this field '
-                                     u"is used for generating 'leadimage' scale"),
-                       default=81,
-                       required=True)
+    image_height = schema.Int(
+        title=_(u'Height'),
+        description=_(u'Lead image scale height. Value specified in this field '
+                      u"is used for generating 'leadimage' scale"),
+        default=81,
+        required=True)
 
-    desc_scale_name = schema.Choice(title=_(u"'Description' image scale"),
-                               description=_(u'Please select scale which will be used next to Description field.'),
-                               required=True,
-                               default='thumb',
-                               vocabulary = u"collective.contentleadimage.scales_vocabulary",
-                        )
+    desc_scale_name = schema.Choice(
+        title=_(u"'Description' image scale"),
+        description=_(u'Please select scale which will be used next to Description field.'),
+        required=True,
+        default='thumb',
+        vocabulary = u"collective.contentleadimage.scales_vocabulary",
+        )
 
-    body_scale_name = schema.Choice(title=_(u"'Body' image scale"),
-                               description=_(u'Please select scale which will be used in the body.'),
-                               required=True,
-                               default='mini',
-                               vocabulary = u"collective.contentleadimage.scales_vocabulary",
-                        )
+    body_scale_name = schema.Choice(
+        title=_(u"'Body' image scale"),
+        description=_(u'Please select scale which will be used in the body.'),
+        required=True,
+        default='mini',
+        vocabulary = u"collective.contentleadimage.scales_vocabulary",
+        )
 
-    viewlet_description = schema.Bool(title=_(u'Show image next to Description field'),
-                                  default=True,
-                          )
+    viewlet_description = schema.Bool(
+        title=_(u'Show image next to Description field'),
+        default=True,
+        )
 
-    viewlet_body        = schema.Bool(title=_(u'Show image in body area'),
-                                  default=False,
-                          )
+    viewlet_body = schema.Bool(
+        title=_(u'Show image in body area'),
+        default=False,
+        )
 
 
 class LeadImageControlPanelAdapter(SchemaAdapterBase):
@@ -202,10 +209,10 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
     def set_body_scale_name(self, value):
         self.cli_props.body_scale_name = value
 
-    image_height  = property(get_image_height, set_image_height)
-    image_width   = property(get_image_width, set_image_width)
-    viewlet_description  = property(get_viewlet_description, set_viewlet_description)
-    viewlet_body  = property(get_viewlet_body, set_viewlet_body)
+    image_height = property(get_image_height, set_image_height)
+    image_width = property(get_image_width, set_image_width)
+    viewlet_description = property(get_viewlet_description, set_viewlet_description)
+    viewlet_body = property(get_viewlet_body, set_viewlet_body)
     allowed_types = property(get_allowed_types, set_allowed_types)
     desc_scale_name = property(get_desc_scale_name, set_desc_scale_name)
     body_scale_name = property(get_body_scale_name, set_body_scale_name)
@@ -245,7 +252,8 @@ class LeadImagePrefsForm(ControlPanelForm):
         self.request.response.redirect(url + '/plone_control_panel')
         return ''
 
-    @form.action(_(u'label_recreate_scales', default=u'Recreate scales'), name=u'scales', validator=null_validator)
+    @form.action(_(u'label_recreate_scales', default=u'Recreate scales'),
+                 name=u'scales', validator=null_validator)
     def handle_scales_action(self, action, data):
         CheckAuthenticator(self.request)
         number = 0
@@ -274,4 +282,6 @@ class LeadImagePrefsForm(ControlPanelForm):
             if state is None:
                 obj._p_deactivate()
 
-        self.status = _(u"text_scales_recreated", default=u"${number} scales recreated.", mapping={'number':number})
+        self.status = _(u"text_scales_recreated",
+                        default=u"${number} scales recreated.",
+                        mapping={'number': number})

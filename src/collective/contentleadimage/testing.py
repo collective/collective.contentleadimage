@@ -6,6 +6,7 @@ from plone.app.testing import quickInstallProduct
 
 from plone.testing import z2
 
+
 class CollectiveContentLeadImageLayer(PloneSandboxLayer):
 
     defaultBases = (PLONE_FIXTURE,)
@@ -29,4 +30,3 @@ COLLECTIVE_CONTENTLEADIMAGE_INTEGRATION_TESTING = IntegrationTesting(
 COLLECTIVE_CONTENTLEADIMAGE_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_CONTENTLEADIMAGE_FIXTURE,),
     name="CollectiveContentLeadImageLayer:Functional")
-

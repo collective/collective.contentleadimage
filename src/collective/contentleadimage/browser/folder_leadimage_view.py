@@ -7,6 +7,7 @@ from collective.contentleadimage.config import IMAGE_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
+
 class FolderLeadImageView(BrowserView):
 
     template = ViewPageTemplateFile('folder_leadimage_view.pt')
@@ -29,4 +30,3 @@ class FolderLeadImageView(BrowserView):
                 scale = self.prefs.desc_scale_name
                 return field.tag(context, scale=scale, css_class=css_class, title=title)
         return ''
-

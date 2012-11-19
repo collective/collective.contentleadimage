@@ -1,7 +1,6 @@
 from collective.contentleadimage.config import IMAGE_FIELD_NAME
 
 
-
 class LeadImagePurge(object):
 
     def __init__(self, context):
@@ -26,7 +25,7 @@ class LeadImagePurge(object):
 
             url = '/'.join(path_parts)
             scalenames = field.getAvailableSizes(context)
-            urls = ['%s/%s'%(url,IMAGE_FIELD_NAME)]+['%s/%s_'%(url,IMAGE_FIELD_NAME) + s for s in scalenames]
+            urls = ['%s/%s'%(url, IMAGE_FIELD_NAME)]+['%s/%s_'%(url, IMAGE_FIELD_NAME) + s for s in scalenames]
 
         return urls
 
@@ -39,5 +38,3 @@ class LeadImagePurge(object):
         The list of relative URLs is passed in and should not be modified.
         """
         return []
-
-

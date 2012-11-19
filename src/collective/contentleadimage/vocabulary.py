@@ -24,7 +24,8 @@ class ScalesVocabulary(object):
         result = [SimpleTerm(scale, scale, "%s (%dx%d)" % (scale, width, height)), ]
 
         for scale, (width, height) in config.IMAGE_SIZES.items():
-            result.append( SimpleTerm(scale, scale, "%s (%dx%d)" % (scale, width, height)) )
+            result.append(SimpleTerm(scale, scale, "%s (%dx%d)" % (
+                scale, width, height)))
 
         return SimpleVocabulary(result)
 
@@ -36,6 +37,7 @@ class  PloneAppImagingScalesVocabulary(object):
     def __call__(self, context):
         terms = []
         for scale, (width, height) in getAllowedSizes().iteritems():
-            terms.append( SimpleTerm(scale, scale, "%s (%dx%d)" % (scale, width, height)) )
+            terms.append(SimpleTerm(scale, scale, "%s (%dx%d)" % (
+                scale, width, height)))
 
         return SimpleVocabulary(terms)

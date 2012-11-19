@@ -10,7 +10,7 @@ logger = logging.getLogger('leadimgae.migration')
 
 def migrate0xto1(context):
     portal = context.portal_url.getPortalObject()
-    ctool  = getToolByName(portal, 'portal_catalog')
+    ctool = getToolByName(portal, 'portal_catalog')
     items = ctool(object_provides=ILeadImageable.__identifier__)
     cnt = len(items)
     logger.info('Migrating %d items' % cnt)
@@ -25,10 +25,11 @@ def migrate0xto1(context):
             # remove annotation key
             del IAnnotations(obj)[CONTENT_LEADIMAGE_ANNOTATION_KEY]
 
+
 def migrateToBlobs(context):
     from plone.app.blob.interfaces import IBlobWrapper
     portal = context.portal_url.getPortalObject()
-    ctool  = getToolByName(portal, 'portal_catalog')
+    ctool = getToolByName(portal, 'portal_catalog')
     items = ctool(object_provides=ILeadImageable.__identifier__)
     cnt = len(items)
     logger.info('Migrating %d items' % cnt)
@@ -50,4 +51,3 @@ def migrateToBlobs(context):
                             extfield.removeScales(obj)
                     field.getMutator(obj)(value)
     logger.info('Migration finished')
-

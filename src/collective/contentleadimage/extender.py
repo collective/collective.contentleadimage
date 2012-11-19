@@ -31,6 +31,7 @@ try:
 except ImportError:
     HAS_BLOB = False
 
+
 class LeadimageCaptionField(ExtensionField, StringField):
     """ A trivial string field """
 
@@ -65,42 +66,42 @@ captionField = LeadimageCaptionField(IMAGE_CAPTION_FIELD_NAME,
                 ),
     )
 
+
 class LeadImageExtender(object):
     adapts(ILeadImageable)
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
 
     layer = ILeadImageSpecific
 
-
-
     fields = [
-        LeadimageImageField(IMAGE_FIELD_NAME,
-          required = False,
-          storage = AnnotationStorage(migrate=True),
-          languageIndependent = True,
-          max_size = zconf.ATNewsItem.max_image_dimension,
-          swallowResizeExceptions = zconf.swallowImageResizeExceptions.enable,
-          pil_quality = zconf.pil_config.quality,
-          pil_resize_algo = zconf.pil_config.resize_algo,
-          validators = (('isNonEmptyFile', V_REQUIRED),
-                               ('checkNewsImageMaxSize', V_REQUIRED)),
-          widget = ImageWidget(
-                         label=_(u"Lead image"),
-                         description=_(u"You can upload lead image. This image "
-                                       u"will be displayed above the content. "
-                                       u"Uploaded image will be automatically "
-                                       u"scaled to size specified in the leadimage "
-                                       u"control panel."),
-                         show_content_type=False,
-                 ),
-        ),
+        LeadimageImageField(
+            IMAGE_FIELD_NAME,
+            required = False,
+            storage = AnnotationStorage(migrate=True),
+            languageIndependent = True,
+            max_size = zconf.ATNewsItem.max_image_dimension,
+            swallowResizeExceptions = zconf.swallowImageResizeExceptions.enable,
+            pil_quality = zconf.pil_config.quality,
+            pil_resize_algo = zconf.pil_config.resize_algo,
+            validators = (('isNonEmptyFile', V_REQUIRED),
+                          ('checkNewsImageMaxSize', V_REQUIRED)),
+            widget = ImageWidget(
+                label=_(u"Lead image"),
+                description=_(u"You can upload lead image. This image "
+                              u"will be displayed above the content. "
+                              u"Uploaded image will be automatically "
+                              u"scaled to size specified in the leadimage "
+                              u"control panel."),
+                show_content_type=False,
+                ),
+            ),
 
         captionField,
 
         ]
 
     def __init__(self, context):
-         self.context = context
+        self.context = context
 
     def getFields(self):
         portal = getUtility(IPloneSiteRoot)
@@ -149,20 +150,19 @@ if HAS_BLOB:
                 validators = (('isNonEmptyFile', V_REQUIRED),
                               ('checkNewsImageMaxSize', V_REQUIRED)),
                 widget = ImageWidget(
-                           label=_(u"Lead image"),
-                           description=_(u"You can upload lead image. This image "
-                                         u"will be displayed above the content. "
-                                         u"Uploaded image will be automatically "
-                                         u"scaled to size specified in the leadimage "
-                                         u"control panel."),
-                           show_content_type=False,
-                   ),
-            ),
+                    label=_(u"Lead image"),
+                    description=_(u"You can upload lead image. This image "
+                                  u"will be displayed above the content. "
+                                  u"Uploaded image will be automatically "
+                                  u"scaled to size specified in the leadimage "
+                                  u"control panel."),
+                    show_content_type=False,
+                    ),
+                ),
 
             captionField,
 
             ]
-
 
 
 class LeadImageTraverse(DefaultPublishTraverse):
