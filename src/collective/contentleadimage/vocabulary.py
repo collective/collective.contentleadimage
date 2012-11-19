@@ -2,6 +2,11 @@ from Products.CMFPlone.interfaces import IPloneSiteRoot
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.component import getUtility
 from zope.schema.vocabulary import SimpleTerm
+try:
+    from plone.app.imaging.utils import getAllowedSizes
+    getAllowedSizes  # pyflakes
+except ImportError:
+    getAllowedSizes = lambda: dict()
 
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 from collective.contentleadimage import config
@@ -29,8 +34,6 @@ class  PloneAppImagingScalesVocabulary(object):
     """
 
     def __call__(self, context):
-        # importing here should prevent errors when using w/o plone.app.imaging
-        from plone.app.imaging.utils import getAllowedSizes
         terms = []
         for scale, (width, height) in getAllowedSizes().iteritems():
             terms.append( SimpleTerm(scale, scale, "%s (%dx%d)" % (scale, width, height)) )
