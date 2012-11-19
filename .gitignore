@@ -2,6 +2,7 @@
 bin/
 develop-eggs/
 parts/
+*.mo
 *.pyc
 *.egg-info
 .long-description.html
