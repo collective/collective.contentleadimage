@@ -11,7 +11,7 @@ logger = logging.getLogger('leadimgae.migration')
 def migrate0xto1(context):
     portal = context.portal_url.getPortalObject()
     ctool  = getToolByName(portal, 'portal_catalog')
-    items = ctool(object_provides=ILeadImageable.__identifier__) 
+    items = ctool(object_provides=ILeadImageable.__identifier__)
     cnt = len(items)
     logger.info('Migrating %d items' % cnt)
     for item in items:
@@ -24,19 +24,19 @@ def migrate0xto1(context):
                 field.set(obj, image['data'], mimetype=image['contenttype'])
             # remove annotation key
             del IAnnotations(obj)[CONTENT_LEADIMAGE_ANNOTATION_KEY]
-            
+
 def migrateToBlobs(context):
     from plone.app.blob.interfaces import IBlobWrapper
     portal = context.portal_url.getPortalObject()
     ctool  = getToolByName(portal, 'portal_catalog')
-    items = ctool(object_provides=ILeadImageable.__identifier__) 
+    items = ctool(object_provides=ILeadImageable.__identifier__)
     cnt = len(items)
     logger.info('Migrating %d items' % cnt)
     for item in items:
         obj = item.getObject()
         field = obj.getField(IMAGE_FIELD_NAME)
         if (field is not None) and not IBlobWrapper.providedBy(field.getUnwrapped(obj)):
-            # this is apparently old content. AttributeError is raised 
+            # this is apparently old content. AttributeError is raised
             # when old site is upgraded to BLOB aware one
             # Let's migrate
             logger.info('Migrating item %s' % '/'.join(obj.getPhysicalPath()))
@@ -50,4 +50,4 @@ def migrateToBlobs(context):
                             extfield.removeScales(obj)
                     field.getMutator(obj)(value)
     logger.info('Migration finished')
-                    
+

@@ -5,7 +5,7 @@ CONTENT_LEADIMAGE_ANNOTATION_KEY = 'collective.contentleadimage'
 IMAGE_FIELD_NAME = 'leadImage'
 IMAGE_CAPTION_FIELD_NAME = 'leadImage_caption'
 
-# All upload images will be scaled to this size. 
+# All upload images will be scaled to this size.
 # Thumbnail will be created to value set in the preferences - (81,67) by default
 IMAGE_SCALE_NAME = 'leadimage'
 IMAGE_SCALE_SIZE = (81,67)

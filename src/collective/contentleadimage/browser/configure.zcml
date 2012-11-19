@@ -4,7 +4,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     xmlns:zcml="http://namespaces.zope.org/zcml"
     i18n_domain="collective.contentleadimage">
-    
+
     <include package="plone.app.contentmenu" />
 
     <!-- Custom viewlet -->
@@ -36,12 +36,12 @@
          layer="..interfaces.ILeadImageSpecific"
          permission="cmf.ManagePortal"
     />
-    
+
     <browser:resource
         name="contentleadimage.css"
         layer="..interfaces.ILeadImageSpecific"
         file="contentleadimage.css" />
-   
+
     <browser:page
          for="Products.Archetypes.interfaces.IBaseFolder"
          name="folder_leadimage_view"
@@ -51,7 +51,7 @@
          permission="zope2.View"
          allowed_attributes="tag"
     />
-    
+
     <browser:menuItem
         for="Products.Archetypes.interfaces.IBaseFolder"
         menu="plone_displayviews"
@@ -60,7 +60,7 @@
         layer="..interfaces.ILeadImageSpecific"
         description="View with lead images displayed"
     />
-   
+
     <browser:page
          for="Products.CMFPlone.interfaces.IPloneSiteRoot"
          name="folder_leadimage_view"
@@ -69,7 +69,7 @@
          layer="..interfaces.ILeadImageSpecific"
          permission="zope2.View"
      />
-    
+
     <browser:menuItem
         for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         menu="plone_displayviews"

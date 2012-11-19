@@ -3,10 +3,10 @@ from collective.contentleadimage.config import IMAGE_FIELD_NAME
 
 
 class LeadImagePurge(object):
-    
+
     def __init__(self, context):
         self.context = context
-    
+
     def getRelativeUrls(self):
         """Return a list of relative URLs that should be purged.
 
@@ -39,5 +39,5 @@ class LeadImagePurge(object):
         The list of relative URLs is passed in and should not be modified.
         """
         return []
-    
+
 

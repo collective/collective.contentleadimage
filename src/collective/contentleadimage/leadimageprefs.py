@@ -30,7 +30,7 @@ except ImportError:
     getAllowedSizes = lambda: dict()
 
 
-class ILeadImagePrefsForm(Interface):    
+class ILeadImagePrefsForm(Interface):
     """ The view for LeadImage  prefs form. """
 
     allowed_types = schema.Tuple(title=_(u'Portal types'),
@@ -39,7 +39,7 @@ class ILeadImagePrefsForm(Interface):
                           value_type=schema.Choice(
                                    vocabulary="plone.app.vocabularies.ReallyUserFriendlyTypes"),
                           required=False)
-    
+
     image_width = schema.Int(title=_(u'Width'),
                        description=_(u'Lead image scale width. Value specified in this field '
                                      u"is used for generating 'leadimage' scale"),
@@ -80,7 +80,7 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
 
     adapts(IPloneSiteRoot)
     implements(ILeadImagePrefsForm)
-    
+
     def __init__(self, context):
         super(LeadImageControlPanelAdapter, self).__init__(context)
         pprop = getUtility(IPropertiesTool)
@@ -142,7 +142,7 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
                 self._change_imaging_props(w, h)
         # store the size to cli_properties in any case
         self.cli_props.image_height = image_height
-    
+
     def get_image_width(self):
         if self.imaging_props is not None:
             # get from plone.app.imaging properties
@@ -162,7 +162,7 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
                 self._change_imaging_props(w, h)
         # store the size to cli_properties in any case
         self.cli_props.image_width = image_width
-    
+
     def get_viewlet_description(self):
         manager = 'plone.belowcontenttitle'
         viewlet = 'collective.contentleadimage.thumbnail'
@@ -172,7 +172,7 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
         manager = 'plone.belowcontenttitle'
         viewlet = 'collective.contentleadimage.thumbnail'
         self.setViewletVisibility(manager, viewlet, value)
-        
+
     def get_viewlet_body(self):
         manager = 'plone.abovecontentbody'
         viewlet = 'collective.contentleadimage.full'
@@ -182,22 +182,22 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
         manager = 'plone.abovecontentbody'
         viewlet = 'collective.contentleadimage.full'
         self.setViewletVisibility(manager, viewlet, value)
-        
+
     def get_allowed_types(self):
         return self.cli_props.allowed_types
-        
+
     def set_allowed_types(self, allowed_types):
         self.cli_props.allowed_types = allowed_types
-        
+
     def get_desc_scale_name(self):
         return self.cli_props.desc_scale_name
-        
+
     def set_desc_scale_name(self, value):
         self.cli_props.desc_scale_name = value
-        
+
     def get_body_scale_name(self):
         return self.cli_props.body_scale_name
-    
+
     def set_body_scale_name(self, value):
         self.cli_props.body_scale_name = value
 
@@ -209,7 +209,7 @@ class LeadImageControlPanelAdapter(SchemaAdapterBase):
     desc_scale_name = property(get_desc_scale_name, set_desc_scale_name)
     body_scale_name = property(get_body_scale_name, set_body_scale_name)
 
-    
+
 class LeadImagePrefsForm(ControlPanelForm):
     """ The view class for the lead image preferences form. """
 
@@ -219,8 +219,8 @@ class LeadImagePrefsForm(ControlPanelForm):
     label = _(u'Content Lead Image Settings Form')
     description = _(u'Select properties for Content Lead Image')
     form_name = _(u'Content Lead Image Settings')
-            
-    # handle_edit_action and handle_cancel_action are copied from 
+
+    # handle_edit_action and handle_cancel_action are copied from
     # ControlPanelForm because they are overriden by my handle_scales_action
     @form.action(_p(u'label_save', default=u'Save'), name=u'save')
     def handle_edit_action(self, action, data):
@@ -243,7 +243,7 @@ class LeadImagePrefsForm(ControlPanelForm):
                               name='absolute_url')()
         self.request.response.redirect(url + '/plone_control_panel')
         return ''
-            
+
     @form.action(_(u'label_recreate_scales', default=u'Recreate scales'), name=u'scales', validator=null_validator)
     def handle_scales_action(self, action, data):
         CheckAuthenticator(self.request)

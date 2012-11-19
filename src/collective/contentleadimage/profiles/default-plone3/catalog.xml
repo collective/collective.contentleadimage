@@ -3,5 +3,5 @@
  <index name="hasContentLeadImage" meta_type="FieldIndex">
   <indexed_attr value="hasContentLeadImage"/>
  </index>
- <column value="hasContentLeadImage" /> 
+ <column value="hasContentLeadImage" />
 </object>

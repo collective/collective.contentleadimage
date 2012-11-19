@@ -11,8 +11,8 @@ class ILeadImageSpecific(IDefaultPloneLayer):
 
 class ILeadImageable(Interface):
     """ marker interface """
-    
+
 class IFolderLeadSummaryView(Interface):
-    
+
     def getLeadImageTag(obj):
         """ generate the tag """

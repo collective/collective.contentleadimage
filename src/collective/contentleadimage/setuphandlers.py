@@ -7,11 +7,11 @@ def setupCatalog(portal, indexes=dict(), metadata=list()):
 
     idxs = catalog.indexes()
     mtds = catalog.schema()
-    
+
     for index in indexes.keys():
         if index not in idxs:
             catalog.addIndex(index, indexes[index])
-    
+
     for mt in metadata:
         if mt not in mtds:
             catalog.addColumn(mt)
@@ -33,13 +33,13 @@ def importVarious(self):
         props.manage_addProperty('desc_scale_name', 'thumb', 'string')
     if not props.hasProperty('body_scale_name'):
         props.manage_addProperty('body_scale_name', 'mini', 'string')
-        
+
     setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex'),
                          metadata=['hasContentLeadImage'])
 
     prefs = ILeadImagePrefsForm(portal)
     prefs.viewlet_description = False
-    
+
 def removeConfiglet(self):
     if self.readDataFile('cli-uninstall.txt') is None:
         return

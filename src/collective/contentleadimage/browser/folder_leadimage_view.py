@@ -8,7 +8,7 @@ from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
 class FolderLeadImageView(BrowserView):
-    
+
     template = ViewPageTemplateFile('folder_leadimage_view.pt')
 
     @property
