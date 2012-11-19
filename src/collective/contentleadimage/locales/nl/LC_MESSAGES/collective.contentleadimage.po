@@ -97,7 +97,7 @@ msgstr "U kunt een lead afbeelding uploaden. Deze afbeelding wordt boven de cont
 
 #: ./extender.py:75
 msgid "You may enter lead image caption text"
-msgstr "Hier kunt u een caption tekst voor de afbeeling invoeren"
+msgstr "Hier kunt u een caption tekst voor de afbeelding invoeren"
 
 #. Default: "Recreate scales"
 #: ./leadimageprefs.py:199
