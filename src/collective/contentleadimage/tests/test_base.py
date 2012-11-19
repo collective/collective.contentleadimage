@@ -6,6 +6,7 @@ from plone.testing import layered
 from collective.contentleadimage.testing import \
     COLLECTIVE_CONTENTLEADIMAGE_FUNCTIONAL_TESTING
 
+
 def getdoctestfile(filename):
     return layered(doctest.DocFileSuite(filename,
             package='collective.contentleadimage'),
@@ -17,8 +18,8 @@ def test_suite():
     suite.addTest(getdoctestfile('README.txt'))
     try:
         from Products.CacheSetup.interfaces import IPurgeUrls
+        IPurgeUrls  # pyflakes
         suite.addTest(getdoctestfile('tests/cachesetup.txt'))
     except ImportError:
         pass
     return suite
-

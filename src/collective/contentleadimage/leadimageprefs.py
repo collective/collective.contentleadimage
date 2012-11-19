@@ -26,6 +26,7 @@ from ZODB.POSException import ConflictError
 
 try:
     from plone.app.imaging.utils import getAllowedSizes
+    getAllowedSizes  # pyflakes
 except ImportError:
     getAllowedSizes = lambda: dict()
 
