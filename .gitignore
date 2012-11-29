@@ -2,6 +2,7 @@
 bin/
 develop-eggs/
 parts/
+/dist/
 *.mo
 *.pyc
 *.egg-info
