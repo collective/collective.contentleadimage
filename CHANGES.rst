@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.5 - Unreleased
+1.3.5-FHNW1 (2012-11-29)
 
     - Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
     - Changed collective.contentleadimage.full registrations in zcml: we should
