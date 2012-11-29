@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.3.5 (unreleased)
+------------------
+
+- Nothing changed yet.
+
+
 1.3.5-FHNW1 (2012-11-29)
 
     - Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
