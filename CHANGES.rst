@@ -4,14 +4,14 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed blob based images not being language neutral [miohtama]
 
 
 1.3.5-FHNW1 (2012-11-29)
 
     - Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
     - Changed collective.contentleadimage.full registrations in zcml: we should
-      register the viewlet with IViewView interface restriction, in this way it 
+      register the viewlet with IViewView interface restriction, in this way it
       will be shown only in the canonical view [lucabel]
     - Allow contententleadimage in all skins [tom_gross]
 
@@ -35,7 +35,7 @@ Changelog
 
 1.3.1 - 2011/05/20
 
-    - Checking for Products.CacheSetup presence before registernig 
+    - Checking for Products.CacheSetup presence before registernig
       its subscriber
       [silviot]
 
@@ -77,23 +77,23 @@ Changelog
       see TODO.txt for possible issues
       [fRiSi]
 
-    - fixed folder_leadimage_view to display content-type icon only for the 
+    - fixed folder_leadimage_view to display content-type icon only for the
       headline
-      (in plonetheme.sunburst the next image contained in 
+      (in plonetheme.sunburst the next image contained in
       contenttypes-sprite.png has been visible due to the height of the div)
       [fRiSi]
 
-    - toLocalizedTime has not been available in plone4.0b2 (fetching it as 
-      folder_listing does) 
+    - toLocalizedTime has not been available in plone4.0b2 (fetching it as
+      folder_listing does)
       [fRiSi]
 
     - Added Dutch translation
       [maartenkling]
-      
+
     - Added Spanish translation
       [pcaro]
-      
-    - Large Plone Folder was removed from plone4, added zcml:condition for 
+
+    - Large Plone Folder was removed from plone4, added zcml:condition for
       profile - duplicated and edited profile for plone4.
       [hpeteragitator]
 
