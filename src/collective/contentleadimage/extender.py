@@ -142,7 +142,7 @@ if HAS_BLOB:
             LeadimageBlobImageField(IMAGE_FIELD_NAME,
                 required = False,
                 storage = AnnotationStorage(migrate=True),
-                languageIndependent = False,
+                languageIndependent = True,
                 max_size = zconf.ATNewsItem.max_image_dimension,
                 swallowResizeExceptions = zconf.swallowImageResizeExceptions.enable,
                 pil_quality = zconf.pil_config.quality,
