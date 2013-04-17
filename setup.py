@@ -11,12 +11,12 @@ setup(name='collective.contentleadimage',
                         open("CHANGES.rst").read()),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
-          "Framework :: Plone",
-          "Framework :: Zope2",
-          "Framework :: Zope3",
-          "Programming Language :: Python",
-          "Topic :: Software Development :: Libraries :: Python Modules",
-          ],
+                  "Framework :: Plone",
+                  "Framework :: Zope2",
+                  "Framework :: Zope3",
+                  "Programming Language :: Python",
+                  "Topic :: Software Development :: Libraries :: Python Modules",
+                  ],
       keywords='plone',
       author='Radim Novotny',
       author_email='novotny.radim@gmail.com',
@@ -35,7 +35,7 @@ setup(name='collective.contentleadimage',
           'plone.indexer',
       ],
       tests_require=tests_require,
-      extras_require={'tests': tests_require},
+      extras_require={'test': tests_require},
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
