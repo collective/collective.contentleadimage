@@ -1,5 +1,5 @@
-collective.contentleadimage Package Readme
-==========================================
+collective.contentleadimage
+============================
 
 .. contents :: :local:
 
@@ -19,17 +19,21 @@ items in the folder together with images attached.
 
 There is configuration control panel, where you can set maximum width and height
 of the uploaded images. The width and height is applied on each image upload
-(image is automatically resized). You can specify smaller width and height 
-which is used as image preview in the below content title viewlet (next to 
+(image is automatically resized). You can specify smaller width and height
+which is used as image preview in the below content title viewlet (next to
 content Description). Large image is used in the above content body viewlet
-(floated left at the top of content body). 
+(floated left at the top of content body).
 
 Below content title viewlet is preffered, but Manager can easily switch
 the viewlets on/off in the control panel.
 
 There is FieldIndex and metadata in portal_catalog: hasContentLeadImage
-(True/False). This may help developers to create own templates optimized 
+(True/False). This may help developers to create own templates optimized
 for displaying lead image.
+
+**Note**: For Plone 4.4+ and plone.app.contenttypes based content
+there is support for lead image behavior out of the box. This addon
+is only compatible with legacy Archetypes based content.
 
 Installation
 ------------
@@ -38,31 +42,31 @@ If you are using zc.buildout and the plone.recipe.zope2instance recipe to manage
 your project, you can do this:
 
 Add ``collective.contentleadimage`` to the list of eggs to install, e.g.::
-    
+
     [buildout]
     ...
     eggs =
         ...
         collective.contentleadimage
-        
+
 Tell the plone.recipe.zope2instance recipe to install a ZCML slug::
-    
+
     [instance]
     recipe = plone.recipe.zope2instance
     ...
     zcml =
         collective.contentleadimage
-        
+
 Re-run buildout, e.g. with::
-  
+
     $ ./bin/buildout
-        
+
 More detailed installation instructions may be found in docs/INSTALL.txt.
 
 Using collective.contentleadimage with plone.app.scaling
 ----------------------------------------------------------
 
-`plone.app.imaging <http://plone.org/products/plone.app.imaging/>`_ 
+`plone.app.imaging <http://plone.org/products/plone.app.imaging/>`_
 provides dynamic image scales for all Plone images since Plone version 4.1.
 
 Below is an example how to use ``@@images`` with with portal_catalog
@@ -81,8 +85,8 @@ Example page template snipper from a folder listing::
                         <img tal:condition="exists:item_has_leadimage"
                              tal:define="scale item_object/@@images; img python:scale.scale('leadImage', width=280, height=280)"
                              tal:replace="structure python: img.tag() if img else None" />
-       
-Here is another example how Event content type view template is modified to directly 
+
+Here is another example how Event content type view template is modified to directly
 display lead image next to the event details table.
 The modification was done using ``z3c.jbot`` and overriding the template as ``Products.CMFPlone.skins.plone_content.event_view.pt``.
 
