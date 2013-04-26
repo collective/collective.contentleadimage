@@ -5,7 +5,7 @@ Changelog
 ------------------
 
 - Fixed blob based images not being language neutral [miohtama]
-
+- Add french translation [toutpt]
 
 1.3.5-FHNW1 (2012-11-29)
 
