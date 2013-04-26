@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contentleadimage-it\n"
-"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"POT-Creation-Date: 2013-04-26 13:59+0000\n"
 "PO-Revision-Date: 2011-04-08 16:38+0100\n"
 "Last-Translator: Silvio Tomatis <silviot@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -16,95 +16,97 @@ msgstr ""
 "Domain: AddRemoveWidget\n"
 "X-Is-Fallback-For: it-ch it-it\n"
 
-#: ./leadimageprefs.py:57
+#: ./leadimageprefs.py:68
 msgid "'Body' image scale"
 msgstr "Dimensione dell'immagine nel corpo del documento"
 
-#: ./leadimageprefs.py:50
+#: ./leadimageprefs.py:60
 msgid "'Description' image scale"
 msgstr "Dimensione dell'immagine per la \"Descrizione\""
 
-#: ./leadimageprefs.py:173
+#: ./leadimageprefs.py:229
+#: ./profiles/default-plone3/controlpanel.xml
+#: ./profiles/default/controlpanel.xml
 msgid "Content Lead Image Settings"
 msgstr "Opzioni di Content Lead Image"
 
-#: ./leadimageprefs.py:171
+#: ./leadimageprefs.py:227
 msgid "Content Lead Image Settings Form"
 msgstr "Opzioni di Content Lead Image"
 
 msgid "Folder lead-image view"
 msgstr "Elenco con immagini"
 
-#: ./leadimageprefs.py:44
+#: ./leadimageprefs.py:53
 msgid "Height"
 msgstr "Altezza"
 
-#: ./extender.py:59
+#: ./extender.py:89
 msgid "Lead image"
 msgstr "Immagine"
 
-#: ./extender.py:74
+#: ./extender.py:64
 msgid "Lead image caption"
 msgstr "Didascalia immagine"
 
-#: ./leadimageprefs.py:45
+#: ./leadimageprefs.py:54
 msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
 msgstr "Altezza delle immagini. Il valore specificato verrà usato per la dimensione 'leadimage'."
 
-#: ./leadimageprefs.py:39
+#: ./leadimageprefs.py:47
 msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
 msgstr "Larghezza delle immagini. Il valore specificato verrà usato per la dimensione 'leadimage'."
 
-#: ./leadimageprefs.py:58
+#: ./leadimageprefs.py:69
 msgid "Please select scale which will be used in the body."
 msgstr "Selezionare la dimensione da usare nel corpo del testo."
 
-#: ./leadimageprefs.py:51
+#: ./leadimageprefs.py:61
 msgid "Please select scale which will be used next to Description field."
 msgstr "Selezionare la dimensione da usare accanto al campo \"Descrizione\"."
 
-#: ./leadimageprefs.py:31
+#: ./leadimageprefs.py:38
 msgid "Portal types"
 msgstr "Tipo di contenuto"
 
-#: ./leadimageprefs.py:32
+#: ./leadimageprefs.py:39
 msgid "Portal types lead image may be attached to."
 msgstr "Tipi di contenuto a cui è possibile applicare una leadimage."
 
-#: ./leadimageprefs.py:172
+#: ./leadimageprefs.py:228
 msgid "Select properties for Content Lead Image"
 msgstr "Proprietà per Content Lead Image"
 
-#: ./leadimageprefs.py:68
+#: ./leadimageprefs.py:81
 msgid "Show image in body area"
 msgstr "Mostra l'immagine nel corpo del testo"
 
-#: ./leadimageprefs.py:64
+#: ./leadimageprefs.py:76
 msgid "Show image next to Description field"
 msgstr "Mostra l'immagine accanto al campo \"Descrizione\""
 
 msgid "View with lead images displayed"
 msgstr "Vista con immagini viualizzate"
 
-#: ./leadimageprefs.py:38
+#: ./leadimageprefs.py:46
 msgid "Width"
 msgstr "Larghezza"
 
-#: ./extender.py:60
+#: ./extender.py:90
 msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
 msgstr "Puoi inserire un'immagine. Verrà mostrata nella parte superiore del contenuto. L'immagine sarà scalata a una dimensione ragionevole."
 
-#: ./extender.py:75
+#: ./extender.py:65
 msgid "You may enter lead image caption text"
 msgstr "Puoi inserire la didascalia dell'immagine"
 
 #. Default: "Recreate scales"
-#: ./leadimageprefs.py:199
+#: ./leadimageprefs.py:255
 msgid "label_recreate_scales"
 msgstr "Ricalcola ridimensionamento delle immagini."
 
 #. Default: "${number} scales recreated."
-#: ./leadimageprefs.py:228
+#: ./leadimageprefs.py:285
 msgid "text_scales_recreated"
 msgstr "Immagini ridimensionate correttamente."
 

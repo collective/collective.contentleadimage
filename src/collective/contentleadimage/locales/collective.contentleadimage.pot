@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"POT-Creation-Date: 2013-04-26 13:59+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,95 +14,97 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: DOMAIN\n"
 
-#: ./leadimageprefs.py:57
+#: ./leadimageprefs.py:68
 msgid "'Body' image scale"
 msgstr ""
 
-#: ./leadimageprefs.py:50
+#: ./leadimageprefs.py:60
 msgid "'Description' image scale"
 msgstr ""
 
-#: ./leadimageprefs.py:173
+#: ./leadimageprefs.py:229
+#: ./profiles/default-plone3/controlpanel.xml
+#: ./profiles/default/controlpanel.xml
 msgid "Content Lead Image Settings"
 msgstr ""
 
-#: ./leadimageprefs.py:171
+#: ./leadimageprefs.py:227
 msgid "Content Lead Image Settings Form"
 msgstr ""
 
 msgid "Folder lead-image view"
 msgstr ""
 
-#: ./leadimageprefs.py:44
+#: ./leadimageprefs.py:53
 msgid "Height"
 msgstr ""
 
-#: ./extender.py:59
+#: ./extender.py:89
 msgid "Lead image"
 msgstr ""
 
-#: ./extender.py:74
+#: ./extender.py:64
 msgid "Lead image caption"
 msgstr ""
 
-#: ./leadimageprefs.py:45
+#: ./leadimageprefs.py:54
 msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
 msgstr ""
 
-#: ./leadimageprefs.py:39
+#: ./leadimageprefs.py:47
 msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
 msgstr ""
 
-#: ./leadimageprefs.py:58
+#: ./leadimageprefs.py:69
 msgid "Please select scale which will be used in the body."
 msgstr ""
 
-#: ./leadimageprefs.py:51
+#: ./leadimageprefs.py:61
 msgid "Please select scale which will be used next to Description field."
 msgstr ""
 
-#: ./leadimageprefs.py:31
+#: ./leadimageprefs.py:38
 msgid "Portal types"
 msgstr ""
 
-#: ./leadimageprefs.py:32
+#: ./leadimageprefs.py:39
 msgid "Portal types lead image may be attached to."
 msgstr ""
 
-#: ./leadimageprefs.py:172
+#: ./leadimageprefs.py:228
 msgid "Select properties for Content Lead Image"
 msgstr ""
 
-#: ./leadimageprefs.py:68
+#: ./leadimageprefs.py:81
 msgid "Show image in body area"
 msgstr ""
 
-#: ./leadimageprefs.py:64
+#: ./leadimageprefs.py:76
 msgid "Show image next to Description field"
 msgstr ""
 
 msgid "View with lead images displayed"
 msgstr ""
 
-#: ./leadimageprefs.py:38
+#: ./leadimageprefs.py:46
 msgid "Width"
 msgstr ""
 
-#: ./extender.py:60
+#: ./extender.py:90
 msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
 msgstr ""
 
-#: ./extender.py:75
+#: ./extender.py:65
 msgid "You may enter lead image caption text"
 msgstr ""
 
 #. Default: "Recreate scales"
-#: ./leadimageprefs.py:199
+#: ./leadimageprefs.py:255
 msgid "label_recreate_scales"
 msgstr ""
 
 #. Default: "${number} scales recreated."
-#: ./leadimageprefs.py:228
+#: ./leadimageprefs.py:285
 msgid "text_scales_recreated"
 msgstr ""
 

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.contentleadimage-de\n"
-"POT-Creation-Date: 2008-12-16 06:52+0000\n"
+"POT-Creation-Date: 2013-04-26 13:59+0000\n"
 "PO-Revision-Date: 2008-09-25 11:27+0200\n"
 "Last-Translator: Rainer Schaffer <rainer.schaffer@tu-dresden.de>\n"
 "Language-Team: German <kde-i18n-de@lists.kde.org>\n"
@@ -17,95 +17,97 @@ msgstr ""
 "X-Generator: LoKalize 0.2\n"
 "X-Is-Fallback-For: de-at de-li de-lu de-ch de-de\n"
 
-#: ./leadimageprefs.py:57
+#: ./leadimageprefs.py:68
 msgid "'Body' image scale"
 msgstr "Größe des Bildes im Textfeld"
 
-#: ./leadimageprefs.py:50
+#: ./leadimageprefs.py:60
 msgid "'Description' image scale"
 msgstr "Größe des Vorschaubildes"
 
-#: ./leadimageprefs.py:173
+#: ./leadimageprefs.py:229
+#: ./profiles/default-plone3/controlpanel.xml
+#: ./profiles/default/controlpanel.xml
 msgid "Content Lead Image Settings"
 msgstr "Vorschaubildeinstellungen"
 
-#: ./leadimageprefs.py:171
+#: ./leadimageprefs.py:227
 msgid "Content Lead Image Settings Form"
 msgstr "Vorschaubildeinstellungsformular"
 
 msgid "Folder lead-image view"
 msgstr "Kurzfassung mit Vorschaubild"
 
-#: ./leadimageprefs.py:44
+#: ./leadimageprefs.py:53
 msgid "Height"
 msgstr "Höhe"
 
-#: ./extender.py:59
+#: ./extender.py:89
 msgid "Lead image"
 msgstr "Vorschaubild"
 
-#: ./extender.py:74
+#: ./extender.py:64
 msgid "Lead image caption"
 msgstr "Vorschaubildtitel"
 
-#: ./leadimageprefs.py:45
+#: ./leadimageprefs.py:54
 msgid "Lead image scale height. Value specified in this field is used for generating 'leadimage' scale"
 msgstr "Höhe des vergrößerten Vorschaubilds. Die in diesem Feld angegebene Höhe wird zur Erzeugung des vergrößerten Vorschaubilds benutzt."
 
-#: ./leadimageprefs.py:39
+#: ./leadimageprefs.py:47
 msgid "Lead image scale width. Value specified in this field is used for generating 'leadimage' scale"
 msgstr "Breite des vergrößerten Vorschaubilds. Die in diesem Feld angegebene Breite wird zur Erzeugung des vergrößerten Vorschaubilds benutzt."
 
-#: ./leadimageprefs.py:58
+#: ./leadimageprefs.py:69
 msgid "Please select scale which will be used in the body."
 msgstr "Bitte wählen Sie die Größe des Bildes, welches im Text genutzt wird."
 
-#: ./leadimageprefs.py:51
+#: ./leadimageprefs.py:61
 msgid "Please select scale which will be used next to Description field."
 msgstr "Bitte wählen Sie die Größe des Bildes, welches neben dem Beschreibungsfeld benutzt wird."
 
-#: ./leadimageprefs.py:31
+#: ./leadimageprefs.py:38
 msgid "Portal types"
 msgstr "Portaltypen"
 
-#: ./leadimageprefs.py:32
+#: ./leadimageprefs.py:39
 msgid "Portal types lead image may be attached to."
 msgstr "Wählen Sie die Portaltypen aus, bei denen ein Vorschaubild hinzugefügt werden kann."
 
-#: ./leadimageprefs.py:172
+#: ./leadimageprefs.py:228
 msgid "Select properties for Content Lead Image"
 msgstr "Lege die Eigenschaften für das Vorschaubild fest."
 
-#: ./leadimageprefs.py:68
+#: ./leadimageprefs.py:81
 msgid "Show image in body area"
 msgstr "Zeige Bild in maximaler Größe."
 
-#: ./leadimageprefs.py:64
+#: ./leadimageprefs.py:76
 msgid "Show image next to Description field"
 msgstr "Zeige Vorschaubild neben dem Beschreibungsfeld."
 
 msgid "View with lead images displayed"
 msgstr "Ansicht mit Vorschaubild"
 
-#: ./leadimageprefs.py:38
+#: ./leadimageprefs.py:46
 msgid "Width"
 msgstr "Breite"
 
-#: ./extender.py:60
+#: ./extender.py:90
 msgid "You can upload lead image. This image will be displayed above the content. Uploaded image will be automatically scaled to size specified in the leadimage control panel."
 msgstr "Sie können ein Vorschaubild hochladen. Dieses Bild wird über dem Inhalt dargestellt. Hochgeladene Bilder werden automatisch auf die in der Vorschaubildeinstellung angegebene Größe skaliert."
 
-#: ./extender.py:75
+#: ./extender.py:65
 msgid "You may enter lead image caption text"
 msgstr "Hier können Sie einen Titel für das Vorschaubild angeben."
 
 #. Default: "Recreate scales"
-#: ./leadimageprefs.py:199
+#: ./leadimageprefs.py:255
 msgid "label_recreate_scales"
 msgstr "Frische Skalierungen auf."
 
 #. Default: "${number} scales recreated."
-#: ./leadimageprefs.py:228
+#: ./leadimageprefs.py:285
 msgid "text_scales_recreated"
 msgstr "${number} Skalierungen aufgefrischt."
 
