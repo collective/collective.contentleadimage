@@ -72,28 +72,27 @@
                                        item_end item/end/ISO|item/EndDate|nothing;
                                        item_has_leadimage item/hasContentLeadImage;
                                        item_object item/getObject;
+                                       item_has_thumb exists:item_object/image_thumb;
                                    ">
 
-                    <a href="#"
-                       tal:condition="python:item_type != 'Link'"
+                    <a tal:condition="python:item_type != 'Link' and (item_has_leadimage or item_has_thumb)"
                        tal:attributes="href python:item_type in use_view_action and item_url+'/view' or item_url">
                         <img src="" alt=""
-                             tal:condition="exists:item_object/image_thumb"
+                             tal:condition="item_has_thumb"
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='thumb', css_class='tileImage')" />
                         <img src="" alt=""
-                             tal:condition="exists:item_has_leadimage"
+                             tal:condition="item_has_leadimage"
                              tal:replace="structure python:view.tag(item_object, css_class='tileImage')" />
                     </a>
 
-                    <a href="#"
-                       class="link-plain"
-                       tal:condition="python:item_type == 'Link'"
+                    <a class="link-plain"
+                       tal:condition="python:item_type == 'Link' and (item_has_leadimage or item_has_thumb)"
                        tal:attributes="href item/getRemoteUrl">
                         <img src="" alt=""
-                             tal:condition="exists:item_object/image_thumb"
+                             tal:condition="item_has_thumb"
                              tal:replace="structure python: path('nocall:item_object/tag')(scale='thumb', css_class='tileImage')" />
                         <img src="" alt=""
-                             tal:condition="exists:item_has_leadimage"
+                             tal:condition="item_has_leadimage"
                              tal:replace="structure python:view.tag(item_object, css_class='tileImage')" />
                     </a>
 
