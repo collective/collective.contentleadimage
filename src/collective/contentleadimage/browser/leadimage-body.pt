@@ -3,7 +3,7 @@
      tal:condition="tag">
 
     <a href="#"
-       tal:attributes="href string:${context/absolute_url}/leadImage/image_view_fullscreen"
+       tal:attributes="href string:${context/absolute_url}/${view/image_field_name}/image_view_fullscreen"
        id="parent-fieldname-leadImage">
        <img tal:replace="structure tag" src="" alt="" />
     </a>

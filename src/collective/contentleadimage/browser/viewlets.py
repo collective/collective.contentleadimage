@@ -11,6 +11,11 @@ from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 class LeadImageViewlet(ViewletBase):
     """ A simple viewlet which renders leadimage """
 
+    def __init__(self, *args, **kwargs):
+        super(LeadImageViewlet, self).__init__(*args, **kwargs)
+        self.image_field_name = IMAGE_FIELD_NAME
+        self.image_caption_field_name = IMAGE_CAPTION_FIELD_NAME
+
     @property
     def prefs(self):
         portal = getUtility(IPloneSiteRoot)
