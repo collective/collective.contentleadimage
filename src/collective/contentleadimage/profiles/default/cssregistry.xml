@@ -2,5 +2,5 @@
 <object name="portal_css" meta_type="Stylesheets Registry" autogroup="True">
  <stylesheet title="" cacheable="True" compression="safe" cookable="True"
     enabled="on" expression=""
-    id="++resource++contentleadimage.css" media="screen" rel="stylesheet" rendering="import"/>
+    id="++resource++contentleadimage.css" media="screen" rel="stylesheet" rendering="link"/>
 </object>
