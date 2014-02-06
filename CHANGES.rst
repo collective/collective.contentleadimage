@@ -9,231 +9,254 @@ Changelog
 - Add french translation [toutpt]
 
 1.3.5-FHNW1 (2012-11-29)
+------------------------
 
-    - Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
-    - Changed collective.contentleadimage.full registrations in zcml: we should
-      register the viewlet with IViewView interface restriction, in this way it
-      will be shown only in the canonical view [lucabel]
-    - Allow contententleadimage in all skins [tom_gross]
+- Fix type vocabulary to ReallyUserFriendlyTypes [amleczko]
+- Changed collective.contentleadimage.full registrations in zcml: we should
+  register the viewlet with IViewView interface restriction, in this way it
+  will be shown only in the canonical view [lucabel]
+- Allow contententleadimage in all skins [tom_gross]
 
 1.3.4 - 2011/12/28
+------------------
 
-    - Fixed adaption to Plone 4.1 [naro]
+- Fixed adaption to Plone 4.1 [naro]
 
 1.3.3 - 2011/12/28
+------------------
 
-    - Adapted to Plone 4.1 [davidjonas]
-    - Fixed '//' bug in purge.py [adamt]
+- Adapted to Plone 4.1 [davidjonas]
+- Fixed '//' bug in purge.py [adamt]
 
 1.3.2 - 2011/05/24
+------------------
 
-    - Check for presence of a leadimage caption so we don't display an empty
-      div on the page.
-      [davidjb]
-    - Added new tests to check various aspects of rendering the lead image and
-      associated captioning.
-      [davidjb]
+- Check for presence of a leadimage caption so we don't display an empty
+  div on the page.
+  [davidjb]
+- Added new tests to check various aspects of rendering the lead image and
+  associated captioning.
+  [davidjb]
 
 1.3.1 - 2011/05/20
+------------------
 
-    - Checking for Products.CacheSetup presence before registernig
-      its subscriber
-      [silviot]
+- Checking for Products.CacheSetup presence before registernig
+  its subscriber
+  [silviot]
 
-    - add allowed_atributes to folder_leadimage_view so this view can be
-      called from other views
-      [shagi]
+- add allowed_atributes to folder_leadimage_view so this view can be
+  called from other views
+  [shagi]
 
-    - mtool variable definition added
-      [kroman0]
+- mtool variable definition added
+  [kroman0]
 
-    - remove scaled images during migration
-      [otacon]
+- remove scaled images during migration
+  [otacon]
 
 1.3.0 - 2010/09/15
+------------------
 
-    - fixed migration to blobs. Thanks to David Jonas.
-      [naro]
+- fixed migration to blobs. Thanks to David Jonas.
+  [naro]
 
 1.3.0b1 - 2010/09/13
+--------------------
 
-    - added migration to blobs
-      [naro]
+- added migration to blobs
+  [naro]
 
 1.3.0a1 - 2010/08/19
+--------------------
 
-    THIS VERSION ADDS BLOB SUPPORT WHICH BECOMES DEFAULT LEAD IMAGE STORAGE
-    IN PLONE4. MIGRATION TO BLOB IS NOT PREPARED YET! DON'T USE THIS VERSION
-    IF YOU ARE MIGRATING TO PLONE4. IT IS SAFE TO USE IT ON PLONE3
-    OR PLONE4.
+THIS VERSION ADDS BLOB SUPPORT WHICH BECOMES DEFAULT LEAD IMAGE STORAGE
+IN PLONE4. MIGRATION TO BLOB IS NOT PREPARED YET! DON'T USE THIS VERSION
+IF YOU ARE MIGRATING TO PLONE4. IT IS SAFE TO USE IT ON PLONE3
+OR PLONE4.
 
-    - use correct image title (caption) in folder_leadimage_view. Fixes #2
-      [naro]
+- use correct image title (caption) in folder_leadimage_view. Fixes #2
+  [naro]
 
-    - make leadimage languageIndependent. Fixes #1
-      [naro]
+- make leadimage languageIndependent. Fixes #1
+  [naro]
 
-    - store images as blobs in case plone.app.blob is installed and use
-      scales defined in plone.app.imaging
-      see TODO.txt for possible issues
-      [fRiSi]
+- store images as blobs in case plone.app.blob is installed and use
+  scales defined in plone.app.imaging
+  see TODO.txt for possible issues
+  [fRiSi]
 
-    - fixed folder_leadimage_view to display content-type icon only for the
-      headline
-      (in plonetheme.sunburst the next image contained in
-      contenttypes-sprite.png has been visible due to the height of the div)
-      [fRiSi]
+- fixed folder_leadimage_view to display content-type icon only for the
+  headline
+  (in plonetheme.sunburst the next image contained in
+  contenttypes-sprite.png has been visible due to the height of the div)
+  [fRiSi]
 
-    - toLocalizedTime has not been available in plone4.0b2 (fetching it as
-      folder_listing does)
-      [fRiSi]
+- toLocalizedTime has not been available in plone4.0b2 (fetching it as
+  folder_listing does)
+  [fRiSi]
 
-    - Added Dutch translation
-      [maartenkling]
+- Added Dutch translation
+  [maartenkling]
 
-    - Added Spanish translation
-      [pcaro]
+- Added Spanish translation
+  [pcaro]
 
-    - Large Plone Folder was removed from plone4, added zcml:condition for
-      profile - duplicated and edited profile for plone4.
-      [hpeteragitator]
+- Large Plone Folder was removed from plone4, added zcml:condition for
+  profile - duplicated and edited profile for plone4.
+  [hpeteragitator]
 
-    - make sure the viewlets are not shown after adding and removing an image
-      [enriquepablo]
+- make sure the viewlets are not shown after adding and removing an image
+  [enriquepablo]
 
 1.2.0 - 2010/03/14
+------------------
 
-    - Plone 4 compatibility - added dependency on plone.indexer to be
-      compatible with Plone 3.2-
+- Plone 4 compatibility - added dependency on plone.indexer to be
+  compatible with Plone 3.2-
 
-    - Plone 4 compatibility - leadimage scale must be stored in
-      plone.app.imaging properties.
+- Plone 4 compatibility - leadimage scale must be stored in
+  plone.app.imaging properties.
 
 1.1.7 - 2009/09/22
+------------------
 
-    - something went wrong with optional plone.indexer. Let's disable it
-      meanwhile.
+- something went wrong with optional plone.indexer. Let's disable it
+  meanwhile.
 
 1.1.6 - 2009/09/06
+------------------
 
-    - fixed version number
+- fixed version number
 
 1.1.5 - 2009/09/02
+------------------
 
-    - use plone.indexer if possible
+- use plone.indexer if possible
 
-    - added controlapnel icon
+- added controlapnel icon
 
-    - reindex hasContentLeadImage index on reinstall
+- reindex hasContentLeadImage index on reinstall
 
 1.1.4 - 2008/12/16
+------------------
 
-    - fixed bug in migration from version 0.x. Thanks to Ben Chodoroff for
-      pointing to it.
+- fixed bug in migration from version 0.x. Thanks to Ben Chodoroff for
+  pointing to it.
 
-    - added Italian translation. Thanks to [paulox]
+- added Italian translation. Thanks to [paulox]
 
-    - fixed spelling
+- fixed spelling
 
 1.1.3 - 2008/10/14
+------------------
 
-    - be more careful when accessing cli_properties property sheet in schema
-      extender. It may be called too soon and cause AttributeError.
+- be more careful when accessing cli_properties property sheet in schema
+  extender. It may be called too soon and cause AttributeError.
 
-    - added uninstall code which removes configlet
+- added uninstall code which removes configlet
 
 1.1.2 - 2008/10/10
+------------------
 
-    - make lead image field language dependent. This fixes problem with
-      Linguaplone and it helps to make multi language screenshots, for example.
+- make lead image field language dependent. This fixes problem with
+  Linguaplone and it helps to make multi language screenshots, for example.
 
 1.1.1 - 2008/10/10
+------------------
 
-    - fixed body viewlet - image tag was there even if there was no image
+- fixed body viewlet - image tag was there even if there was no image
 
-    - fixed potential error when object schema has no 'description' field.
+- fixed potential error when object schema has no 'description' field.
 
 1.1 - 2008/09/23
+----------------
 
-    - moved integer and string properties from propertiestool.xml to
-      setuphandlers, because properties were overriden with default
-      values on reinstall.
+- moved integer and string properties from propertiestool.xml to
+  setuphandlers, because properties were overriden with default
+  values on reinstall.
 
-    - removed max size settings from the controlpanel and reuse max_size from
-      ATContentTypes settings (zconf.ATNewsItem.max_image_dimension)
+- removed max size settings from the controlpanel and reuse max_size from
+  ATContentTypes settings (zconf.ATNewsItem.max_image_dimension)
 
-    - images may be captioned
+- images may be captioned
 
-    - if image is displayed in the body, it is possible to display image
-      fullscreen (the same as newsitem image)
+- if image is displayed in the body, it is possible to display image
+  fullscreen (the same as newsitem image)
 
-    - it is possible to specify, which scale will be used for displaying the
-      image in "description" part and which in "body" part.
+- it is possible to specify, which scale will be used for displaying the
+  image in "description" part and which in "body" part.
 
-    - make images "newsitem" like. Image tags uses the same CSS classes as
-      news items, leadImage field uses the same scales as News Item plus one
-      special 'leadimage' scale defined by user in the controlpanel.
+- make images "newsitem" like. Image tags uses the same CSS classes as
+  news items, leadImage field uses the same scales as News Item plus one
+  special 'leadimage' scale defined by user in the controlpanel.
 
-    - it is possible to set allowed_types. Document and Folder are allowed
-      by default.
+- it is possible to set allowed_types. Document and Folder are allowed
+  by default.
 
-    - changed CSS - define float on the leadimage-wrapper to easily
-      style leadimage itself (for example for adding border around the image)
+- changed CSS - define float on the leadimage-wrapper to easily
+  style leadimage itself (for example for adding border around the image)
 
 1.0.1 - 2008/09/11
+------------------
 
-    - fixed dependency on plone.browserlayer
+- fixed dependency on plone.browserlayer
 
-    - make extender browser layer aware
+- make extender browser layer aware
 
 1.0 - 2008/09/09
+----------------
 
-    - MIGRATION REQUIRED !
-      rewritten using archetypes.schemaextender. If you upgrade from
-      version <1.0 please don't forget to run upgrade step from
-      portal_setup/Upgrades, choose the collective.contentleadimage profile,
-      check the (0.3 - 1.0) upgrade step and press Upgrade button.
-      [naro]
+- MIGRATION REQUIRED !
+  rewritten using archetypes.schemaextender. If you upgrade from
+  version <1.0 please don't forget to run upgrade step from
+  portal_setup/Upgrades, choose the collective.contentleadimage profile,
+  check the (0.3 - 1.0) upgrade step and press Upgrade button.
+  [naro]
 
-    - Moved leadImage field after the Descripton field.
-      [naro]
+- Moved leadImage field after the Descripton field.
+  [naro]
 
-    - leadImage field supports original size and one scale.
-      [naro]
+- leadImage field supports original size and one scale.
+  [naro]
 
-    - it is possible to specify maxwidth and maxheight in the controlpanel
-      [naro]
+- it is possible to specify maxwidth and maxheight in the controlpanel
+  [naro]
 
-    - created new viewlet in AboveContentBody viewlet manager. This viewlet
-      displays large version of the image (size specified as maxwidth/maxheight
-      in the controlpanel). It is possible to switch on/off both viewlets
-      in @@manage-viewlets or in leadimage control panel.
-      [naro]
+- created new viewlet in AboveContentBody viewlet manager. This viewlet
+  displays large version of the image (size specified as maxwidth/maxheight
+  in the controlpanel). It is possible to switch on/off both viewlets
+  in @@manage-viewlets or in leadimage control panel.
+  [naro]
 
 0.4 - 2008/09/03
+----------------
 
-    - fixed portal action condition. There is new browser view which checks
-      if object provides ILeadImageable interface. This view is called from
-      action condition.
-      [naro]
+- fixed portal action condition. There is new browser view which checks
+  if object provides ILeadImageable interface. This view is called from
+  action condition.
+  [naro]
 
 0.3 - 2008/09/03
+----------------
 
-    - fixed bug - hasContentLeadImage index was not registered.
-      [naro]
+- fixed bug - hasContentLeadImage index was not registered.
+  [naro]
 
-    - added German translation. Thanks to Rainer Schaffer
-      [naro]
+- added German translation. Thanks to Rainer Schaffer
+  [naro]
 
-    - fixed typo in actions.xml (second icon_expr should be available_expr)
-      Thanks to Dan Jacka for spotting this
-      [naro]
+- fixed typo in actions.xml (second icon_expr should be available_expr)
+  Thanks to Dan Jacka for spotting this
+  [naro]
 
 0.2 -
+-----
 
-    - fixed docs
-      [naro]
+- fixed docs
+  [naro]
 
 0.1 -
+-----
 
-    - initial release
+- initial release
