@@ -4,6 +4,8 @@ Changelog
 1.3.5 (unreleased)
 ------------------
 
+- Register CSS Resources to render as link instead of import for better
+  performance. [thet]
 - Also use IMAGE_FIELD_NAME config attributes in leadimage-body.pt [thet]
 - Fixed blob based images not being language neutral [miohtama]
 - Add french translation [toutpt]
