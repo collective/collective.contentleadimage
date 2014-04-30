@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.5 (unreleased)
+1.3.5 (2014-04-30)
 ------------------
 
 - Register CSS Resources to render as link instead of import for better
