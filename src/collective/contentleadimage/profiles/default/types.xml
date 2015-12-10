@@ -3,4 +3,5 @@
  <object name="Folder" />
  <object name="Plone Site" />
  <object name="Topic" />
+ <object name="Collection" />
 </object>

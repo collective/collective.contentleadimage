@@ -28,6 +28,9 @@
 
         <div tal:replace="structure provider:plone.abovecontentbody" />
 
+
+        <metal:core define-macro="content-core"
+                    tal:define="templateId templateId|template/getId">
         <div metal:define-macro="text-field-view"
              id="parent-fieldname-text" class="stx"
              tal:define="kss_class python:getKssClasses('text',
@@ -43,22 +46,27 @@
         <tal:foldercontents define="contentFilter contentFilter|request/contentFilter|nothing;
                             limit_display limit_display|request/limit_display|nothing;
                             more_url more_url|request/more_url|string:folder_contents;
-                            folderContents python:here.portal_type=='Topic' and here.queryCatalog(contentFilter, batch=True) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
-                            use_view_action site_properties/typesUseViewActionInListings|python:();
+                            folderContents folderContents|python:here.portal_type == 'Topic' and here.queryCatalog(contentFilter, batch=True) or here.portal_type == 'Collection' and here.results(batch=True, custom_query=contentFilter or {}) or here.getFolderContents(contentFilter, batch=True, b_size=limit_display or 100);
                             over_limit python: limit_display and len(folderContents) > limit_display;
                             folderContents python: (over_limit and folderContents[:limit_display]) or folderContents;
+                            site_properties context/portal_properties/site_properties;
+                            use_view_action site_properties/typesUseViewActionInListings|python:();
                             normalizeString nocall:context/@@plone/normalizeString;
                             isAnon context/@@plone_portal_state/anonymous;
+                            show_about python:not isAnon or site_properties.allowAnonymousViewAbout;
                             toLocalizedTime nocall: context/@@plone/toLocalizedTime;
                             wtool wtool|context/portal_workflow;
-                            batch folderContents;">
+                            batch batch|folderContents;
+                            navigation_root_url context/@@plone_portal_state/navigation_root_url;
+                            pas_member context/@@pas_member;
+                            plone_view context/@@plone;">
         <tal:listing condition="folderContents">
 
             <tal:block tal:repeat="item folderContents">
                 <div class="tileItem visualIEFloatFix"
                      tal:define="item_url item/getURL|item/absolute_url;
                                        item_id item/getId|item/id;
-                                       item_title_or_id item/pretty_title_or_id;
+                                       item_title_or_id item/pretty_title_or_id|item/Title;
                                        item_description item/Description;
                                        item_type item/portal_type;
                                        item_type_title item/Type;
@@ -68,8 +76,10 @@
                                        item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
                                        item_wf_state_class python:'state-' + normalizeString(item_wf_state);
                                        item_creator item/Creator;
-                                       item_start item/start/ISO|item/StartDate|nothing;
-                                       item_end item/end/ISO|item/EndDate|nothing;
+                                       item_start item/start|item/StartDate|nothing;
+                                       item_end item/end|item/EndDate|nothing;
+                                       item_sametime python: item_start == item_end;
+                                       item_samedate python: (item_end - item_start &lt; 1) if item_type == 'Event' else False;
                                        item_has_leadimage item/hasContentLeadImage;
                                        item_object item/getObject;
                                        item_has_thumb exists:item_object/image_thumb;
@@ -117,44 +127,85 @@
                         </a>
                     </h2>
 
-                    <div class="documentByLine" tal:condition="python: site_properties.allowAnonymousViewAbout or not isAnon">
-                    <tal:event condition="python: item_type == 'Event'">
-                         <span tal:condition="python: item_type == 'Event'"
-                               i18n:translate="label_event_byline">
-                             (<span tal:content="string:${item/location}"
-                                    class="location"
-                                    i18n:name="location">Oslo</span><tal:comma
-                                    tal:replace="string:, "
-                                    tal:condition="item/location" />from
-                              <abbr class="dtstart"
-                                    tal:attributes="title python:item_start"
-                                    tal:content="python:toLocalizedTime(item_start,long_format=1)"
-                                    i18n:name="start">from date</abbr> to
-                              <abbr class="dtend"
-                                    tal:attributes="title python:item_end"
-                                    tal:content="python:toLocalizedTime(item_end,long_format=1)"
-                                    i18n:name="end">to date</abbr>)
-                         </span>
-                    </tal:event>
-                    <tal:newsitem condition="python: item_type == 'News Item'">
-                        <tal:name tal:condition="item_creator"
-                            tal:define="mtool mtool|context/portal_membership; author python:mtool.getMemberInfo(item_creator)">
-                          <span i18n:translate="label_by_author">
-                            by
-                          <a href="#"
-                             tal:attributes="href string:${portal_url}/author/${item_creator}"
-                             tal:content="python:author and author['fullname'] or item_creator"
-                             tal:omit-tag="not:author"
-                             i18n:name="author">
-                            Bob Dobalina
-                          </a>
-                          </span>
-                        </tal:name>
-                        &mdash;
-                        <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
-                        August 16, 2001 at 23:35:59
+                    <div class="documentByLine">
+                        <span tal:condition="python: item_type == 'Event' and item_sametime"
+                              i18n:translate="label_event_byline_onlyfrom">
+                             <abbr class="dtstart"
+                                   tal:attributes="title python:item_start"
+                                   tal:content="python:toLocalizedTime(item_start,long_format=1)"
+                                   i18n:name="start">from date</abbr>
                         </span>
-                    </tal:newsitem>
+                        <span tal:condition="python: item_type == 'Event' and item_samedate and not item_sametime"
+                              i18n:translate="label_event_byline_samedate">
+                             <abbr class="dtstart"
+                                   tal:attributes="title python:item_start"
+                                   tal:content="python:toLocalizedTime(item_start)"
+                                   i18n:name="start">from date</abbr> from
+                             <abbr class="dtstart"
+                                   tal:attributes="title python:item_start"
+                                   tal:content="python:toLocalizedTime(item_start,time_only=1)"
+                                   i18n:name="starttime">from time</abbr> to
+                             <abbr class="dtend"
+                                   tal:attributes="title python:item_end"
+                                   tal:content="python:toLocalizedTime(item_end,time_only=1)"
+                                   i18n:name="end">to time</abbr>
+                        </span>
+                        <span tal:condition="python: item_type == 'Event' and not item_samedate and not item_sametime"
+                              i18n:translate="label_event_byline">
+                              from
+                                   <abbr class="dtstart"
+                                   tal:attributes="title python:item_start"
+                                   tal:content="python:toLocalizedTime(item_start,long_format=1)"
+                                   i18n:name="start">from date</abbr> to
+                             <abbr class="dtend"
+                                   tal:attributes="title python:item_end"
+                                   tal:content="python:toLocalizedTime(item_end,long_format=1)"
+                                   i18n:name="end">to date</abbr>
+                        </span>
+                         <span tal:condition="python: item_type == 'Event' and item.location"
+                              i18n:translate="label_event_byline_location">&mdash;
+                             <span tal:content="string:${item/location}"
+                                   class="location"
+                                   i18n:name="location">Oslo</span>,
+                        </span>
+                        <tal:byline condition="show_about">
+                            &mdash;
+
+                            <tal:name tal:condition="item_creator"
+                                tal:define="author python:pas_member.info(item_creator);
+                                            creator_short_form author/username;
+                                            creator_long_form string:?author=${author/username};
+                                            creator_is_openid python:'/' in creator_short_form;
+                                            creator_id python:(creator_short_form, creator_long_form)[creator_is_openid];">
+                              <span i18n:translate="label_by_author">
+                                by
+                              <a href="#"
+                                 tal:attributes="href string:${navigation_root_url}/author/${item_creator}"
+                                 tal:content="author/name_or_id"
+                                 tal:omit-tag="not:author"
+                                 i18n:name="author">
+                                Bob Dobalina
+                              </a>
+                              </span>
+
+                            </tal:name>
+
+                            <tal:modified condition="python: item_type != 'Event'">
+                                &mdash;
+                                <tal:mod i18n:translate="box_last_modified">
+                                  last modified
+                                </tal:mod>
+                                <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+                                  August 16, 2001 at 23:35:59
+                                </span>
+                            </tal:modified>
+
+                            <metal:description define-slot="description_slot">
+                                <tal:comment replace="nothing">
+                                    Place custom listing info for custom types here
+                                </tal:comment>
+                            </metal:description>
+                        </tal:byline>
                     </div>
 
                     <p class="tileBody">
@@ -180,7 +231,7 @@
             </tal:block>
 
             <!-- Navigation -->
-            <div metal:use-macro="here/batch_macros/macros/navigation" />
+            <div metal:use-macro="context/batch_macros/macros/navigation" />
 
         </tal:listing>
         <metal:empty metal:define-slot="no_items_in_listing">
@@ -193,6 +244,7 @@
 
         </tal:foldercontents>
         </metal:listingmacro>
+        </metal:core>
 
         <metal:subtopics use-macro="here/atct_topic_view/macros/folderlisting_macro" />
 
