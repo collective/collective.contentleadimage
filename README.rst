@@ -73,7 +73,7 @@ Below is an example how to use ``@@images`` with with portal_catalog
 ``hasContentLeadImage`` metadata column to show a custom sized lead image scale
 in a folder listing.
 
-Example page template snipper from a folder listing::
+Example page template snippet from a folder listing::
 
    <div class="tileItem visualIEFloatFix"
                      tal:define="item_has_leadimage item/hasContentLeadImage;
