@@ -11,4 +11,6 @@ def hasContentLeadImage(obj):
     if field is not None:
         value = field.get(obj)
         return not not value
+    else:
+        raise AttributeError
 provideAdapter(hasContentLeadImage, name='hasContentLeadImage')
