@@ -4,6 +4,7 @@ Changelog
 1.3.6 (unreleased)
 ------------------
 
+- Fix gitignore [laulaz]
 - Fix: Don't set None value on hasContentLeadImage index  [boulch]
 
 
