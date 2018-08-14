@@ -2,6 +2,7 @@
 CONTENT_LEADIMAGE_ANNOTATION_KEY = 'collective.contentleadimage'
 
 IMAGE_FIELD_NAME = 'leadImage'
+IMAGE_ALT_FIELD_NAME = 'leadImage_alt'
 IMAGE_CAPTION_FIELD_NAME = 'leadImage_caption'
 
 # All upload images will be scaled to this size.

@@ -22,6 +22,7 @@ from collective.contentleadimage.interfaces import ILeadImageable
 from collective.contentleadimage.interfaces import ILeadImageSpecific
 from collective.contentleadimage import LeadImageMessageFactory as _
 from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_ALT_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_SIZES
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
@@ -34,6 +35,10 @@ except ImportError:
 
 class LeadimageCaptionField(ExtensionField, StringField):
     """ A trivial string field """
+
+
+class LeadimageAltTextField(ExtensionField, StringField):
+    """Alt text for WCAG A compliance"""
 
 
 class LeadimageImageField(ExtensionField, ImageField):
@@ -67,6 +72,16 @@ captionField = LeadimageCaptionField(IMAGE_CAPTION_FIELD_NAME,
     )
 
 
+altTextField = LeadimageAltTextField(IMAGE_ALT_FIELD_NAME,
+    required=False,
+    searchable=False,
+    storage=AnnotationStorage(),
+    widget=StringWidget(
+        label=_(u"Lead image alt text"),
+        description=_(u"Accessibility guidelines require an alt text"),
+    ),
+)
+
 class LeadImageExtender(object):
     adapts(ILeadImageable)
     implements(IOrderableSchemaExtender, IBrowserLayerAwareExtender)
@@ -95,6 +110,8 @@ class LeadImageExtender(object):
                 show_content_type=False,
                 ),
             ),
+
+        altTextField,
 
         captionField,
 
@@ -130,9 +147,12 @@ class LeadImageExtender(object):
             if desc_index >= 0 and (IMAGE_FIELD_NAME in default):
                 default.remove(IMAGE_FIELD_NAME)
                 default.insert(desc_index+1, IMAGE_FIELD_NAME)
+                if IMAGE_ALT_FIELD_NAME in default:
+                    default.remove(IMAGE_ALT_FIELD_NAME)
+                    default.insert(desc_index+2, IMAGE_ALT_FIELD_NAME)
                 if IMAGE_CAPTION_FIELD_NAME in default:
                     default.remove(IMAGE_CAPTION_FIELD_NAME)
-                    default.insert(desc_index+2, IMAGE_CAPTION_FIELD_NAME)
+                    default.insert(desc_index+3, IMAGE_CAPTION_FIELD_NAME)
         return original
 
 if HAS_BLOB:
@@ -159,6 +179,8 @@ if HAS_BLOB:
                     show_content_type=False,
                     ),
                 ),
+
+            altTextField,
 
             captionField,
 

@@ -4,6 +4,7 @@ from plone.app.layout.viewlets import ViewletBase
 from zope.component import getUtility
 
 from collective.contentleadimage.config import IMAGE_FIELD_NAME
+from collective.contentleadimage.config import IMAGE_ALT_FIELD_NAME
 from collective.contentleadimage.config import IMAGE_CAPTION_FIELD_NAME
 from collective.contentleadimage.leadimageprefs import ILeadImagePrefsForm
 
@@ -21,13 +22,29 @@ class LeadImageViewlet(ViewletBase):
         portal = getUtility(IPloneSiteRoot)
         return ILeadImagePrefsForm(portal)
 
+    @property
+    def alt(self):
+        context = aq_inner(self.context)
+        alt_field = context.getField(IMAGE_ALT_FIELD_NAME)
+        alt = alt_field.get(context)
+        if not alt:
+            try:
+                alt = context.title
+            except AttributeError:
+                alt = 'No description provided'
+        return alt
+
     def bodyTag(self, css_class='newsImage'):
         """ returns img tag """
         context = aq_inner(self.context)
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.body_scale_name
-            return field.tag(context, scale=scale, css_class=css_class)
+            return field.tag(context,
+                             scale=scale,
+                             css_class=css_class,
+                             alt=self.alt,
+                             title=self.alt)
         return ''
 
     def descTag(self, css_class='tileImage'):
@@ -36,7 +53,11 @@ class LeadImageViewlet(ViewletBase):
         field = context.getField(IMAGE_FIELD_NAME)
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.desc_scale_name
-            return field.tag(context, scale=scale, css_class=css_class)
+            return field.tag(context,
+                             scale=scale,
+                             css_class=css_class,
+                             alt=self.alt,
+                             title=self.alt)
         return ''
 
     def hasCaption(self):
