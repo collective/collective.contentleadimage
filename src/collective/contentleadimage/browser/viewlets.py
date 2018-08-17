@@ -16,6 +16,7 @@ class LeadImageViewlet(ViewletBase):
         super(LeadImageViewlet, self).__init__(*args, **kwargs)
         self.image_field_name = IMAGE_FIELD_NAME
         self.image_caption_field_name = IMAGE_CAPTION_FIELD_NAME
+        self.image_alt_field_name = IMAGE_ALT_FIELD_NAME
 
     @property
     def prefs(self):
@@ -29,7 +30,7 @@ class LeadImageViewlet(ViewletBase):
         alt = alt_field.get(context)
         if not alt:
             try:
-                alt = context.title
+                alt = context.Title()
             except AttributeError:
                 alt = 'No description provided'
         return alt
@@ -38,26 +39,30 @@ class LeadImageViewlet(ViewletBase):
         """ returns img tag """
         context = aq_inner(self.context)
         field = context.getField(IMAGE_FIELD_NAME)
+        caption_field = context.getField(IMAGE_CAPTION_FIELD_NAME)
+        caption = caption_field.get(context)
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.body_scale_name
             return field.tag(context,
                              scale=scale,
                              css_class=css_class,
                              alt=self.alt,
-                             title=self.alt)
+                             title=caption)
         return ''
 
     def descTag(self, css_class='tileImage'):
         """ returns img tag """
         context = aq_inner(self.context)
         field = context.getField(IMAGE_FIELD_NAME)
+        caption_field = context.getField(IMAGE_CAPTION_FIELD_NAME)
+        caption = caption_field.get(context)
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.desc_scale_name
             return field.tag(context,
                              scale=scale,
                              css_class=css_class,
                              alt=self.alt,
-                             title=self.alt)
+                             title=caption)
         return ''
 
     def hasCaption(self):

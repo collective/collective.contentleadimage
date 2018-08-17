@@ -1,3 +1,4 @@
+from Products.Archetypes.BaseObject import BaseObject
 from Products.Archetypes.public import ImageField
 from Products.Archetypes.public import StringField
 from Products.Archetypes.public import StringWidget
@@ -33,6 +34,23 @@ except ImportError:
     HAS_BLOB = False
 
 
+# alt text should be required when uploading lead images
+def post_validate(self, REQUEST=None, errors=None):
+    upload = REQUEST.get('leadImage_file', None)
+    delete = REQUEST.get('leadImage_delete', None)
+    alt = REQUEST.get('leadImage_alt', None)
+    errmsg = "Alt text is required when uploading an image"
+    if upload and not alt:
+        errors['leadImage_alt'] = errmsg
+    if delete and delete != 'delete' and not alt:
+        errors['leadImage_alt'] = errmsg
+
+    if errors:
+        return errors
+
+BaseObject.post_validate = post_validate
+
+
 class LeadimageCaptionField(ExtensionField, StringField):
     """ A trivial string field """
 
@@ -60,19 +78,21 @@ if HAS_BLOB:
         """
         pass
 
-captionField = LeadimageCaptionField(IMAGE_CAPTION_FIELD_NAME,
-        required=False,
-        searchable=False,
-        storage = AnnotationStorage(),
-        languageIndependent = False,
-        widget = StringWidget(
-                    label=_(u"Lead image caption"),
-                    description=_(u"You may enter lead image caption text"),
-                ),
-    )
+captionField = LeadimageCaptionField(
+    IMAGE_CAPTION_FIELD_NAME,
+    required=False,
+    searchable=False,
+    storage=AnnotationStorage(),
+    languageIndependent=False,
+    widget=StringWidget(
+               label=_(u"Lead image caption"),
+               description=_(u"You may enter lead image caption text"),
+           ),
+)
 
 
-altTextField = LeadimageAltTextField(IMAGE_ALT_FIELD_NAME,
+altTextField = LeadimageAltTextField(
+    IMAGE_ALT_FIELD_NAME,
     required=False,
     searchable=False,
     storage=AnnotationStorage(),
@@ -81,6 +101,7 @@ altTextField = LeadimageAltTextField(IMAGE_ALT_FIELD_NAME,
         description=_(u"Accessibility guidelines require an alt text"),
     ),
 )
+
 
 class LeadImageExtender(object):
     adapts(ILeadImageable)

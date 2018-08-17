@@ -23,20 +23,12 @@ class FolderLeadImageView(BrowserView):
         field = context.getField(IMAGE_FIELD_NAME)
         altf = context.getField(IMAGE_ALT_FIELD_NAME)
         titlef = context.getField(IMAGE_CAPTION_FIELD_NAME)
-        alt = ''
+        alt = None
+        title = None
         if altf is not None:
             alt = altf.get(context)
-        if altf is None or not alt:
-            try:
-                alt = context.title
-            except AttributeError:
-                alt = 'No description provided'
         if titlef is not None:
             title = titlef.get(context)
-        elif alt:
-            title = alt
-        else:
-            title = ''
         if field is not None:
             if field.get_size(context) != 0:
                 scale = self.prefs.desc_scale_name
