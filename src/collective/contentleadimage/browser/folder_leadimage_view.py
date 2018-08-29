@@ -1,4 +1,5 @@
 from Products.Five import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from collective.contentleadimage.utils import content_lead_image_tag
 
 
