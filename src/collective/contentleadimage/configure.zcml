@@ -118,4 +118,14 @@
         profile="collective.contentleadimage:default"
     />
 
+    <genericsetup:upgradeDepends
+        sortkey="3"
+        source="2"
+        destination="3"
+        title="Add new catalog index"
+        description=""
+        profile="collective.contentleadimage:default"
+        import_steps="contentleadimage-various"
+    />
+
 </configure>

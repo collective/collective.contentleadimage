@@ -41,14 +41,21 @@ class LeadImageViewlet(ViewletBase):
         field = context.getField(IMAGE_FIELD_NAME)
         caption_field = context.getField(IMAGE_CAPTION_FIELD_NAME)
         caption = caption_field.get(context)
+        tag = ''
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.body_scale_name
-            return field.tag(context,
+            if caption:
+                tag = field.tag(context,
                              scale=scale,
                              css_class=css_class,
                              alt=self.alt,
                              title=caption)
-        return ''
+            else:
+                tag = field.tag(context,
+                             scale=scale,
+                             css_class=css_class,
+                             alt=self.alt)
+        return tag
 
     def descTag(self, css_class='tileImage'):
         """ returns img tag """
@@ -56,14 +63,21 @@ class LeadImageViewlet(ViewletBase):
         field = context.getField(IMAGE_FIELD_NAME)
         caption_field = context.getField(IMAGE_CAPTION_FIELD_NAME)
         caption = caption_field.get(context)
+        tag = ''
         if field is not None and field.get_size(context) != 0:
             scale = self.prefs.desc_scale_name
-            return field.tag(context,
+            if caption:
+                tag = field.tag(context,
                              scale=scale,
                              css_class=css_class,
                              alt=self.alt,
                              title=caption)
-        return ''
+            else:
+                tag = field.tag(context,
+                             scale=scale,
+                             css_class=css_class,
+                             alt=self.alt)
+        return tag
 
     def hasCaption(self):
         context = aq_inner(self.context)

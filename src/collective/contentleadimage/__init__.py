@@ -1,7 +1,7 @@
 from zope.i18n import MessageFactory
 LeadImageMessageFactory = MessageFactory('collective.contentleadimage')
 
-# import utils to register indexable attribute
+# import utils to register indexable attributes
 import utils
 utils  # pyflakes
 

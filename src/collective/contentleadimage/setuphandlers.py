@@ -35,8 +35,10 @@ def importVarious(self):
     if not props.hasProperty('body_scale_name'):
         props.manage_addProperty('body_scale_name', 'mini', 'string')
 
-    setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex'),
-                 metadata=['hasContentLeadImage'])
+    setupCatalog(portal, indexes=dict(hasContentLeadImage='FieldIndex',
+                                      contentLeadImageTag='FieldIndex'),
+                 metadata=['hasContentLeadImage',
+                           'contentLeadImageTag'])
 
     prefs = ILeadImagePrefsForm(portal)
     prefs.viewlet_description = False
