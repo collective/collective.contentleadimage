@@ -37,3 +37,6 @@ dist
 venv
 bin
 buildout-cache
+include/
+lib/
+pip-selfcheck.json

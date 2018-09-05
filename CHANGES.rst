@@ -8,7 +8,6 @@ Changelog
 - Fix gitignore [laulaz]
 - Fix: Don't set None value on hasContentLeadImage index  [boulch]
 
-
 1.3.5 (2014-04-30)
 ------------------
 

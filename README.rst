@@ -6,7 +6,8 @@ collective.contentleadimage
 Overview
 --------
 
-.. image:: https://travis-ci.org/collective/collective.contentleadimage.png
+.. image:: https://travis-ci.org/collective/collective.contentleadimage.svg?branch=master
+    :target: https://travis-ci.org/collective/collective.contentleadimage
 
 This products adds complete support for adding descriptive image to any
 Archetypes based content in Plone site. Each object has new tab "Edit lead
