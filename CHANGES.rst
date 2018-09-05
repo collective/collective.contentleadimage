@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.3.6 (unreleased)
+1.3.6 (2018-09-05)
 ------------------
 
 - Add french translation [laulaz]
