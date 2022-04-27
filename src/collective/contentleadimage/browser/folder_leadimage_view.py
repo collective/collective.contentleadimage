@@ -8,4 +8,4 @@ class FolderLeadImageView(BrowserView):
     template = ViewPageTemplateFile('folder_leadimage_view.pt')
 
     def tag(self, obj, css_class='tileImage'):
-        return content_lead_image_tag(obj, css_class)
+        return content_lead_image_tag(obj, css_class=css_class)
